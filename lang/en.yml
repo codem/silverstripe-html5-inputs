@@ -1,0 +1,5 @@
+en:
+  Codem\Utilities\HTML5\DateField:
+    VALIDATION: 'Please enter a valid date in the format {format} (example:{example})'
+  Codem\Utilities\HTML5\NumberField:
+    VALIDATION: 'Please enter a number value'
