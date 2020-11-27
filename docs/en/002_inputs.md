@@ -20,11 +20,15 @@ $fields->addFieldToTab(
 ```html
 <input type="color" id="field" name="field" value="#00bedf">
 ```
+<input type="color" id="field" name="field" value="#00bedf">
 
-![Colour Field output in Chrome](../img/colourfield.png)
 <hr>
 
-With a `<datalist>`, although note that browsers will allow ther colours to be picked:
+![Colour Field output in Chrome](../img/colourfield.png)
+
+<hr>
+
+With a `<datalist>`, although note that browsers will allow other colours to be picked:
 
 ```html
 <input type="color" id="field" name="field" value="#00bedf" list="colours">
@@ -36,3 +40,12 @@ With a `<datalist>`, although note that browsers will allow ther colours to be p
   <option>#00ffff</option>
 </datalist>
 ```
+
+<input type="color" id="field" name="field" value="#00bedf" list="colours">
+<datalist id="colours">
+  <option>#ff0000</option>
+  <option>#0000ff</option>
+  <option>#00ff00</option>
+  <option>#ffff00</option>
+  <option>#00ffff</option>
+</datalist>
