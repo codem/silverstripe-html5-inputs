@@ -35,15 +35,6 @@ Certain inputs support a `<datalist>`, [e.g the colour field](./docs/en/002_inpu
 composer require codem/silverstripe-html5-inputs
 ```
 
-Until this appears in Packagist, add a repository line in composer.json:
-
-```json
-{
-    "type": "vcs",
-    "url": "https://github.com/codem/silverstripe-html5-inputs.git"
-}
-```
-
 ## License
 
 BSD-3-Clause
