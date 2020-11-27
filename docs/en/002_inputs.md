@@ -4,7 +4,9 @@
 
 ## Colour field
 
-[Support](https://caniuse.com/input-color)
+> [Support Matrix](https://caniuse.com/input-color)
+
++ This field only supports 6chr hex values as per the W3C spec.
 
 ```php
 // or ColorField if you are en-us
@@ -13,5 +15,24 @@ $fields->addFieldToTab(
         ColourField::create('TertiaryColour')
 );
 ```
-### Example
+### Example HTML
+
+```html
+<input type="color" id="field" name="field" value="#00bedf">
+```
+
 ![Colour Field output in Chrome](../img/colourfield.png)
+<hr>
+
+With a `<datalist>`, although note that browsers will allow ther colours to be picked:
+
+```html
+<input type="color" id="field" name="field" value="#00bedf" list="colours">
+<datalist id="colours">
+  <option>#ff0000</option>
+  <option>#0000ff</option>
+  <option>#00ff00</option>
+  <option>#ffff00</option>
+  <option>#00ffff</option>
+</datalist>
+```
