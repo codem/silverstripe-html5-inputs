@@ -18,7 +18,7 @@ The supported inputs are listed at https://developer.mozilla.org/en-US/docs/Web/
 
 Browser support for these fields is varying although nearly all modern browsers will support these fields to a decent extent.
 
-Date, datetime and time fields are particularly difficult to support, due to locale differences and event different user expectations within those locales.
+Date, datetime and time fields are particularly difficult to support, due to locale differences and even different user expectations within those locales.
 
 ### Datalist
 
