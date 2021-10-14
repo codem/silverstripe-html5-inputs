@@ -1,6 +1,6 @@
 # HTML5 field classes for Silverstripe
 
-This is module *under development* to provide a set of bare bones HTML5 inputs with no Javascript or CSS.
+This module provides a set of bare bones HTML5 inputs with no Javascript or CSS.
 
 You can use these fields in your projects as-is or extend them to provide additional features or shims.
 
