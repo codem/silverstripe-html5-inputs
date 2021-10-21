@@ -5,8 +5,7 @@ namespace Codem\Utilities\HTML5;
 use SilverStripe\Dev\SapphireTest;
 
 /**
- * Tests for mailgun-sync, see README.md for more
- * @author James Ellis <james.ellis@dpc.nsw.gov.au>
+ * ColourField input test
  */
 
 class ColourInputTest extends SapphireTest

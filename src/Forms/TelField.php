@@ -17,13 +17,6 @@ class TelField extends TextField {
     protected $inputType = 'tel';
 
     /**
-     * @inheritdoc
-     */
-    public function Type() {
-        return 'text tel';
-    }
-
-    /**
      * TODO: use libphonenumber to validate the number
      *
      * @param Validator $validator
