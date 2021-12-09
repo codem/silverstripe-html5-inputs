@@ -31,6 +31,13 @@ class UrlField extends TextField {
     protected $schemes = [];
 
     /**
+     * @inheritdoc
+     */
+    public function Type() {
+        return 'url text';
+    }
+
+    /**
      * Parts of the URL that must be present
      * One or more of the potential keys within the return array of parse_url()
      * By default the field requires a scheme and host to be present
