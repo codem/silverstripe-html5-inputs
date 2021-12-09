@@ -81,7 +81,7 @@ class UrlField extends TextField {
                 $this->getName(),
                 _t(
                     'Codem\\Utilities\\HTML5\\UrlField.FAILED_URL_PARSE',
-                    'The value provided does not appear to be a well-formed URL'
+                    'The URL value provided is missing required parts'
                 ),
                 ValidationResult::TYPE_ERROR
             );
