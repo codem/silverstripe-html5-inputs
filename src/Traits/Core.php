@@ -2,6 +2,10 @@
 
 namespace Codem\Utilities\HTML5;
 
+/**
+ * Core common attribute methods
+ * @author James
+ */
 trait Core {
 
     protected function bool2str($value) {

@@ -16,8 +16,6 @@ class ColorField extends TextField {
     use Core;
     use Datalist;
 
-    protected $template = "Codem/Utilities/HTML5/ColorField";
-
     protected $inputType = 'color';
 
     protected $defaultValue = "#ffffff";

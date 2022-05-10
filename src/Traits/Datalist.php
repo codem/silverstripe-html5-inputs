@@ -2,19 +2,38 @@
 
 namespace Codem\Utilities\HTML5;
 
-use Silverstripe\ORM\ArrayList;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
 
+/**
+ * Datalist trait used for supporting inputs that can have a <datalist>
+ * @author James
+ */
 trait Datalist {
 
     /**
      * @var array
      */
-    protected $input_datalist;
+    protected $inputDatalist;
 
     /**
      * @var string
      */
-    protected $input_datalist_id;
+    protected $inputDatalistId;
+
+    /**
+     * Return values  for a <datalist>
+     */
+    protected function createDataList(array $datalist) : ArrayList {
+        $list = ArrayList::create();
+        foreach($datalist as $value => $label) {
+            $list->push( ArrayData::create([
+                'Value' => $value,
+                'Label' => $label
+            ]) );
+        }
+        return $list;
+    }
 
     /**
      * Set a list of values rendered into a <datalist> tag (HTMLDataListElement)
@@ -22,20 +41,32 @@ trait Datalist {
      * @param string $id optional datalist id attribute
      * @return FormField
      */
-    public function setDatalist(ArrayList $list, $id = null) {
-        $this->input_datalist = $list;
-        if($id) {
-            $this->input_datalist_id = $id;
+    public function setDatalist(array $datalist, $id = null) {
+        $this->inputDatalist = $this->createDataList($datalist);
+        if(!$id) {
+            $id = $this->ID() . "_datalist";
         }
+        $this->inputDatalistId = $id;
+        $this->setAttribute('list', $id);
         return $this;
     }
 
-    public function getDatalist() {
-        return $this->input_datalist;
+    public function getDatalist() : ?ArrayList {
+        return $this->inputDatalist;
     }
 
-    public function Datalist() {
+    /**
+     * Return datalist id value
+     */
+    public function Datalist() : ?ArrayList {
         return $this->getDatalist();
+    }
+
+    /**
+     * Return datalist id value
+     */
+    public function DatalistID() : ?string {
+        return $this->inputDatalistId;
     }
 
 }

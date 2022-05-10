@@ -2,6 +2,10 @@
 
 namespace Codem\Utilities\HTML5;
 
+/**
+ * Min/Max handling for supporting inputs
+ * @author James
+ */
 trait MinMax {
 
     public function setMin($min) {

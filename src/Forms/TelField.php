@@ -6,6 +6,7 @@ use SilverStripe\Forms\TextField;
 
 /**
  * From <input> elements of type tel are used to let the user enter and edit a telephone number.
+ * @author James
  */
 class TelField extends TextField {
 

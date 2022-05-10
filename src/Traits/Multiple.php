@@ -2,7 +2,11 @@
 
 namespace Codem\Utilities\HTML5;
 
-trait Pattern {
+/**
+ * multiple handling for supporting inputs
+ * @author James
+ */
+trait Multiple {
 
     /**
      * Set whether an input can accept multiple values

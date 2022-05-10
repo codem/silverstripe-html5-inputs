@@ -1,16 +1,42 @@
 <?php
 
-namespace Codem\Utilities\HTML5;
+namespace Codem\Utilities\HTML5\Tests;
 
+use Codem\Utilities\HTML5\ColorField;
+use Codem\Utilities\HTML5\ColourField;
 use SilverStripe\Dev\SapphireTest;
 
 /**
  * ColourField input test
  */
 
-class ColourInputTest extends SapphireTest
+require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
+
+class ColourInputTest extends AbstractFieldTest
 {
-    protected $usesDatabase = false;
+
+    public function testDataList() {
+        $options = [
+            '#ff0000' => 'Red',
+            '#00ff00' => 'Green',
+            '#0000ff' => 'Blue',
+            '#000000' => "Black",
+            '#ffffff' => "White"
+        ];
+        $name = "TestDatalist";
+        $title = "Test datalist";
+        $value = null;
+        $field = ColourField::create($name, $title, $value);
+        $this->performDataListTest( $field, $options);
+    }
+
+    public function testInputType() {
+        $name = "TestDatalist";
+        $title = "Test datalist";
+        $value = null;
+        $field = ColourField::create($name, $title, $value);
+        $this->assertEquals('color', $field->getAttribute('type'));
+    }
 
     public function testColourInput() {
         $colours = [

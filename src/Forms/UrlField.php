@@ -17,11 +17,6 @@ class UrlField extends TextField {
     /**
      * @var string
      */
-    protected $template = "Codem/Utilities/HTML5/UrlField";
-
-    /**
-     * @var string
-     */
     protected $inputType = 'url';
 
     /**
