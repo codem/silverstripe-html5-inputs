@@ -3,8 +3,9 @@
 namespace Codem\Utilities\HTML5;
 
 /**
- * Provides a datetime field, which is basically the same as a DateField
+ * Provides a datetime-local field, which is basically the same as a DateField
  * but with hour and minute selection
+ * @author James
  */
 class DatetimeField extends DateField {
 

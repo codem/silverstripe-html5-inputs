@@ -2,12 +2,13 @@
 
 namespace Codem\Utilities\HTML5;
 
-use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\TextField;
 
 /**
- * Numeric input field
+ * Number input field
+ * @author James
  */
-class NumberField extends NumericField {
+class NumberField extends TextField {
 
     use Core;
     use Datalist;

@@ -5,6 +5,7 @@ namespace Codem\Utilities\HTML5;
 /**
  * Provides a month field, which is basically the same as a DateField
  * but with month and year selection
+ * @author James
  */
 class MonthField extends DateField {
 

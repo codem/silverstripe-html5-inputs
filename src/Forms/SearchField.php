@@ -6,6 +6,7 @@ use SilverStripe\Forms\TextField;
 
 /**
  * Search input field
+ * @author James
  */
 class SearchField extends TextField {
 

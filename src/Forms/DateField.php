@@ -6,6 +6,7 @@ use Silverstripe\Forms\TextField;
 
 /**
  * Provides a date field
+ * @author James
  */
 class DateField extends TextField {
 
@@ -14,23 +15,21 @@ class DateField extends TextField {
     use Step;
     use MinMax;
 
-    protected $template = "Codem/Utilities/HTML5/DateField";
-
     protected $inputType = 'date';
 
     protected $datetime_format = "Y-m-d";
 
     protected $example = "2020-12-31";
 
-    protected function formatDate(Datetime $datetime) {
+    protected function formatDate(\Datetime $datetime) {
         return $datetime->format( $this->datetime_format );
     }
 
-    public function setMin(DateTime $min) {
+    public function setMin(\DateTime $min) {
         return $this->setAttribute('min', $this->formatDate($min));
     }
 
-    public function setMax(DateTime $max) {
+    public function setMax(\DateTime $max) {
         return $this->setAttribute('max', $this->formatDate($max));
     }
 
@@ -45,7 +44,7 @@ class DateField extends TextField {
     {
         try {
             $this->value = trim($this->value);
-            $dt = new Datetime($this->value);
+            $dt = new \Datetime($this->value);
             $formatted = $this->formatDate($dt);
             if($formatted != $this->value) {
                 throw new \Exception("Invalid date value passed");

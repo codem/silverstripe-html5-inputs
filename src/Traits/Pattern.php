@@ -2,6 +2,10 @@
 
 namespace Codem\Utilities\HTML5;
 
+/**
+ * pattern handling for supporting inputs
+ * @author James
+ */
 trait Pattern {
 
     /**

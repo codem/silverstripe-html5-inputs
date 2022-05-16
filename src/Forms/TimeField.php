@@ -4,6 +4,7 @@ namespace Codem\Utilities\HTML5;
 
 /**
  * Provides a time field, limited to hour and minute selection only
+ * @author James
  */
 class TimeField extends DateField {
 

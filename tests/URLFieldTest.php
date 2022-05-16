@@ -1,6 +1,6 @@
 <?php
 
-namespace Codem\Utilities\HTML5;
+namespace Codem\Utilities\HTML5\Tests;
 
 use Codem\Utilities\HTML5\UrlField;
 use SilverStripe\Dev\SapphireTest;
@@ -10,9 +10,31 @@ use SilverStripe\Forms\RequiredFields;
  * URLField input test
  */
 
-class URLFieldTest extends SapphireTest
+require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
+
+class URLFieldTest extends AbstractFieldTest
 {
-    protected $usesDatabase = false;
+
+    public function testDataList() {
+        $options = [
+            'https://example.com' => 'Example.com',
+            'https://example.org' => 'Example.org',
+            'exampl.net' => 'Example.net'
+        ];
+        $name = "TestDatalist";
+        $title = "Test datalist";
+        $value = null;
+        $field = UrlField::create($name, $title, $value);
+        $this->performDataListTest( $field, $options);
+    }
+
+    public function testInputType() {
+        $name = "TestDatalist";
+        $title = "Test datalist";
+        $value = null;
+        $field = UrlField::create($name, $title, $value);
+        $this->assertEquals('url', $field->getAttribute('type'));
+    }
 
     public function testHttpScheme() {
         $url = 'ftp://www.example.com/path?foo=bar';
