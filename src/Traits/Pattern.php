@@ -6,7 +6,8 @@ namespace Codem\Utilities\HTML5;
  * pattern handling for supporting inputs
  * @author James
  */
-trait Pattern {
+trait Pattern
+{
 
     /**
      * @var string
@@ -19,7 +20,8 @@ trait Pattern {
      * @param string $phpPattern optional regular expression for use in server side validation. If not provided, $pattern will be used. Helpful when the JS RegExp won't compile.
      * @return FormField
      */
-    public function setPattern(string $pattern, string $phpPattern = '') {
+    public function setPattern(string $pattern, string $phpPattern = '')
+    {
         $this->setAttribute('pattern', $pattern);
         $this->phpPattern = $phpPattern;
         return $this;
@@ -28,14 +30,16 @@ trait Pattern {
     /**
      * @return string|null
      */
-    public function getPattern() {
+    public function getPattern()
+    {
         return $this->getAttribute('pattern');
     }
 
     /**
      * @return string
      */
-    public function getPHPPattern() : string {
+    public function getPHPPattern() : string
+    {
         return $this->phpPattern;
     }
 
@@ -43,7 +47,8 @@ trait Pattern {
      * Validate the value against the provided php regex pattern
      * When providing a pattern, you must provide the corresponding php regular expression
      */
-    public function validateValueAgainstPattern() : bool {
+    public function validateValueAgainstPattern() : bool
+    {
         $pattern = $this->phpPattern;
         if(!$pattern) {
             $pattern = $this->getPattern();

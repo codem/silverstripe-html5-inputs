@@ -7,7 +7,8 @@ use SilverStripe\Forms\TextField;
 /**
  * Range input field
  */
-class RangeField extends TextField {
+class RangeField extends TextField
+{
 
     use Core;
     use Datalist;

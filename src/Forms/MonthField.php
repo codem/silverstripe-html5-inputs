@@ -7,7 +7,8 @@ namespace Codem\Utilities\HTML5;
  * but with month and year selection
  * @author James
  */
-class MonthField extends DateField {
+class MonthField extends DateField
+{
 
     protected $inputType = 'month';
 

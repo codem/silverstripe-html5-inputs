@@ -11,7 +11,8 @@ use SilverStripe\Forms\Validator;
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color#Value wrt value
  */
-class ColorField extends TextField {
+class ColorField extends TextField
+{
 
     use Core;
     use Datalist;
@@ -24,7 +25,8 @@ class ColorField extends TextField {
      * Returns the value saved as a 6 chr RGB colour with # prefixed
      * @return string
      */
-    public function dataValue() {
+    public function dataValue()
+    {
         $value = $this->getValidRGB($this->value);
         return $value;
     }
@@ -42,7 +44,8 @@ class ColorField extends TextField {
      * @param string $value an RGB colour value as a 'valid simple colour'
      * @return void
      */
-    public function setValue($value, $data = null) {
+    public function setValue($value, $data = null)
+    {
         $this->value = $this->getValidRGB($value);
     }
 
@@ -61,7 +64,8 @@ class ColorField extends TextField {
      *    representing the red component, the middle two digits representing the green component,
      *  and the last two digits representing the blue component, in hexadecimal.</blockquote>
      */
-    public function getValidRGB($value, Validator $validator = null) {
+    public function getValidRGB($value, Validator $validator = null)
+    {
 
         // empty values default to the empty value value
         if(!$value) {
@@ -71,7 +75,7 @@ class ColorField extends TextField {
         $value = strtolower($value);
 
         // If input is not exactly seven characters long, then return an error.
-        if(mb_strlen( $value ) != 7) {
+        if(mb_strlen($value) != 7) {
             if($validator) {
                 $validator->validationError(
                     $this->name,

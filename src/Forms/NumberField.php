@@ -8,7 +8,8 @@ use SilverStripe\Forms\TextField;
  * Number input field
  * @author James
  */
-class NumberField extends TextField {
+class NumberField extends TextField
+{
 
     use Core;
     use Datalist;

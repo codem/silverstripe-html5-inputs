@@ -15,7 +15,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class ColourInputTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             '#ff0000' => 'Red',
             '#00ff00' => 'Green',
@@ -27,10 +28,11 @@ class ColourInputTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = ColourField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;
@@ -38,7 +40,8 @@ class ColourInputTest extends AbstractFieldTest
         $this->assertEquals('color', $field->getAttribute('type'));
     }
 
-    public function testColourInput() {
+    public function testColourInput()
+    {
         $colours = [
             // in => expected
             '' => '#ffffff',//empty values default to white

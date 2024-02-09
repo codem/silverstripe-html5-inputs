@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class WeekFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             '2019-W26' => 'Week 26, 2019'
         ];
@@ -22,10 +23,11 @@ class WeekFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = WeekField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

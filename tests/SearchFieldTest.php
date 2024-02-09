@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class SearchFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             'horse',
             'cow',
@@ -25,10 +26,11 @@ class SearchFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = SearchField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

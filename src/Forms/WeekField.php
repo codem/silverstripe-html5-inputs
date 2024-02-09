@@ -8,7 +8,8 @@ namespace Codem\Utilities\HTML5;
  * year plus the ISO 8601 week number during that year (i.e., week 1 to 52 or 53).
  * @author James
  */
-class WeekField extends DateField {
+class WeekField extends DateField
+{
 
     protected $inputType = 'week';
 

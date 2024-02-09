@@ -7,7 +7,8 @@ namespace Codem\Utilities\HTML5;
  * but with hour and minute selection
  * @author James
  */
-class DatetimeField extends DateField {
+class DatetimeField extends DateField
+{
 
     protected $inputType = 'datetime-local';
 

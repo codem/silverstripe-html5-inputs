@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class RangeFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             1 => 1,
             2 => 2,
@@ -28,10 +29,11 @@ class RangeFieldTest extends AbstractFieldTest
         $field = RangeField::create($name, $title, $value);
         $field->setMin(1);
         $field->setMax(13);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

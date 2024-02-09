@@ -8,7 +8,8 @@ use SilverStripe\Forms\TextField;
  * From <input> elements of type tel are used to let the user enter and edit a telephone number.
  * @author James
  */
-class TelField extends TextField {
+class TelField extends TextField
+{
 
     use Core;
     use Datalist;
@@ -20,7 +21,8 @@ class TelField extends TextField {
     /**
      * @inheritdoc
      */
-    public function Type() {
+    public function Type()
+    {
         return 'tel text';
     }
 

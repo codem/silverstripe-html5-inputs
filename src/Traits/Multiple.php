@@ -6,14 +6,16 @@ namespace Codem\Utilities\HTML5;
  * multiple handling for supporting inputs
  * @author James
  */
-trait Multiple {
+trait Multiple
+{
 
     /**
      * Set whether an input can accept multiple values
      * @param bool $multiple when false, the attribute is removed
      * @return FormField
      */
-    public function setMultiple(bool $multiple) {
+    public function setMultiple(bool $multiple)
+    {
         if($multiple) {
             $this->setAttribute('multiple', 'multiple');
         } else {
@@ -22,7 +24,8 @@ trait Multiple {
         return $this;
     }
 
-    public function getMultiple() {
+    public function getMultiple()
+    {
         return $this->getAttribute('multiple');
     }
 
