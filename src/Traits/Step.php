@@ -2,13 +2,16 @@
 
 namespace Codem\Utilities\HTML5;
 
-trait Step {
+trait Step
+{
 
-    public function setStep($step) {
+    public function setStep($step)
+    {
         return $this->setAttribute('step', $step);
     }
 
-    public function getStep() {
+    public function getStep()
+    {
         return $this->getAttribute('step');
     }
 

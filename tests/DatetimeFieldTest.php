@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class DatetimeFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             '2018-01-01 12:30' => 'Option 1',
             '2027-03-02 13:30' => 'Option 2',
@@ -24,10 +25,11 @@ class DatetimeFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = DatetimeField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

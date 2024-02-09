@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class TelFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             '1800 Testing' => 'phone 1',
             '1801 Testing' => 'phone 2',
@@ -26,10 +27,11 @@ class TelFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = TelField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

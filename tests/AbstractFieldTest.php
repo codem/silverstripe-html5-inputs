@@ -13,9 +13,10 @@ abstract class AbstractFieldTest extends SapphireTest
 
     protected $usesDatabase = false;
 
-    protected function performDataListTest($field, $options) {
+    protected function performDataListTest($field, $options)
+    {
 
-        $field->setDatalist( $options );
+        $field->setDatalist($options);
         $template = $field->FieldHolder();
 
         libxml_use_internal_errors(true);
@@ -26,7 +27,7 @@ abstract class AbstractFieldTest extends SapphireTest
         $this->assertTrue($datalist->hasAttribute('id'), "<datalist> has id attribute");
 
         $option = $datalist->getElementsByTagName('option');
-        $this->assertEquals( count($options), $option->length);
+        $this->assertEquals(count($options), $option->length);
 
     }
 

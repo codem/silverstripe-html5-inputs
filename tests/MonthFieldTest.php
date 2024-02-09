@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class MonthFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             '2019-07' => 'July 2019',
             '2030-12' => 'Dec 2030',
@@ -24,10 +25,11 @@ class MonthFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = MonthField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

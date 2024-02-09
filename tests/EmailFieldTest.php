@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class EmailFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             'barry@example.com' => 'Barry',
             'steve@example.org' => 'Steve',
@@ -24,10 +25,11 @@ class EmailFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = EmailField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

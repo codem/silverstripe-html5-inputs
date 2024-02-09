@@ -14,7 +14,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class TimeFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             '13:00' => 'Lunch',
             '11:00' => 'Elevenses',
@@ -28,10 +29,11 @@ class TimeFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = TimeField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;

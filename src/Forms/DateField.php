@@ -8,7 +8,8 @@ use Silverstripe\Forms\TextField;
  * Provides a date field
  * @author James
  */
-class DateField extends TextField {
+class DateField extends TextField
+{
 
     use Core;
     use Datalist;
@@ -21,15 +22,18 @@ class DateField extends TextField {
 
     protected $example = "2020-12-31";
 
-    protected function formatDate(\Datetime $datetime) {
-        return $datetime->format( $this->datetime_format );
+    protected function formatDate(\Datetime $datetime)
+    {
+        return $datetime->format($this->datetime_format);
     }
 
-    public function setMin(\DateTime $min) {
+    public function setMin(\DateTime $min)
+    {
         return $this->setAttribute('min', $this->formatDate($min));
     }
 
-    public function setMax(\DateTime $max) {
+    public function setMax(\DateTime $max)
+    {
         return $this->setAttribute('max', $this->formatDate($max));
     }
 

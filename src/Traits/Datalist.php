@@ -9,7 +9,8 @@ use SilverStripe\View\ArrayData;
  * Datalist trait used for supporting inputs that can have a <datalist>
  * @author James
  */
-trait Datalist {
+trait Datalist
+{
 
     /**
      * @var array
@@ -24,13 +25,14 @@ trait Datalist {
     /**
      * Return values  for a <datalist>
      */
-    protected function createDataList(array $datalist) : ArrayList {
+    protected function createDataList(array $datalist) : ArrayList
+    {
         $list = ArrayList::create();
         foreach($datalist as $value => $label) {
-            $list->push( ArrayData::create([
+            $list->push(ArrayData::create([
                 'Value' => $value,
                 'Label' => $label
-            ]) );
+            ]));
         }
         return $list;
     }
@@ -41,7 +43,8 @@ trait Datalist {
      * @param string $id optional datalist id attribute
      * @return FormField
      */
-    public function setDatalist(array $datalist, $id = null) {
+    public function setDatalist(array $datalist, $id = null)
+    {
         $this->inputDatalist = $this->createDataList($datalist);
         if(!$id) {
             $id = $this->ID() . "_datalist";
@@ -51,21 +54,24 @@ trait Datalist {
         return $this;
     }
 
-    public function getDatalist() : ?ArrayList {
+    public function getDatalist() : ?ArrayList
+    {
         return $this->inputDatalist;
     }
 
     /**
      * Return datalist id value
      */
-    public function Datalist() : ?ArrayList {
+    public function Datalist() : ?ArrayList
+    {
         return $this->getDatalist();
     }
 
     /**
      * Return datalist id value
      */
-    public function DatalistID() : ?string {
+    public function DatalistID() : ?string
+    {
         return $this->inputDatalistId;
     }
 

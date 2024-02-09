@@ -15,7 +15,8 @@ require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
 class URLFieldTest extends AbstractFieldTest
 {
 
-    public function testDataList() {
+    public function testDataList()
+    {
         $options = [
             'https://example.com' => 'Example.com',
             'https://example.org' => 'Example.org',
@@ -25,10 +26,11 @@ class URLFieldTest extends AbstractFieldTest
         $title = "Test datalist";
         $value = null;
         $field = UrlField::create($name, $title, $value);
-        $this->performDataListTest( $field, $options);
+        $this->performDataListTest($field, $options);
     }
 
-    public function testInputType() {
+    public function testInputType()
+    {
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;
@@ -36,7 +38,8 @@ class URLFieldTest extends AbstractFieldTest
         $this->assertEquals('url', $field->getAttribute('type'));
     }
 
-    public function testHttpScheme() {
+    public function testHttpScheme()
+    {
         $url = 'ftp://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->restrictToHttp();
@@ -58,7 +61,8 @@ class URLFieldTest extends AbstractFieldTest
 
     }
 
-    public function testHttpsScheme() {
+    public function testHttpsScheme()
+    {
         $url = 'http://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->restrictToHttps();
@@ -79,7 +83,8 @@ class URLFieldTest extends AbstractFieldTest
         $this->assertFalse($result, "Field should not validate");
     }
 
-    public function testRequiredParts() {
+    public function testRequiredParts()
+    {
         $url = 'https://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->setRequiredParts(['scheme','query']);
@@ -88,7 +93,8 @@ class URLFieldTest extends AbstractFieldTest
         $this->assertTrue($result, 'parseURL failed to pick up scheme and query in valid URL');
     }
 
-    public function testRequiredPartsMissing() {
+    public function testRequiredPartsMissing()
+    {
         $url = 'https://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->setRequiredParts(['scheme','query', 'fragment']);
@@ -97,7 +103,8 @@ class URLFieldTest extends AbstractFieldTest
         $this->assertFalse($result, 'parseURL failed when finding fragment in URL with no fragment');
     }
 
-    public function testNonStandardSchemes() {
+    public function testNonStandardSchemes()
+    {
         $url = 'https://www.example.com/path?foo=bar';
         $schemes = ['blob','chrome','dict'];
         $field = UrlField::create('TestURL', 'Test URL', $url);
@@ -111,7 +118,8 @@ class URLFieldTest extends AbstractFieldTest
 
     }
 
-    public function testWithPattern() {
+    public function testWithPattern()
+    {
         $url = 'ftp://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $pattern = "^ftp://.+\.com";
@@ -122,7 +130,8 @@ class URLFieldTest extends AbstractFieldTest
         $this->assertTrue($result, "Field should validate for url {$url}");
     }
 
-    public function testWithPatternToFail() {
+    public function testWithPatternToFail()
+    {
         $url = 'ftp://www.example.org/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $pattern = "^ftp://.+\.example\.com";
