@@ -17,11 +17,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Codem\\Utilities\\HTML5\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
+            "Codem\\Utilities\\HTML5\\": [
+                "src/Forms/",
+                "src/Traits/"
+            ],
             "Codem\\Utilities\\HTML5\\Tests\\": "tests/"
         }
     },
