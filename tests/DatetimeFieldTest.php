@@ -3,15 +3,14 @@
 namespace Codem\Utilities\HTML5\Tests;
 
 use Codem\Utilities\HTML5\DatetimeField;
-use SilverStripe\Dev\SapphireTest;
 
 /**
  * DatetimeField input test
  */
 
-require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
+require_once(dirname(__FILE__) . '/Base.php');
 
-class DatetimeFieldTest extends AbstractFieldTest
+class DatetimeFieldTest extends Base
 {
 
     public function testDataList()
@@ -30,10 +29,41 @@ class DatetimeFieldTest extends AbstractFieldTest
 
     public function testInputType()
     {
-        $name = "TestDatalist";
-        $title = "Test datalist";
+        $name = "TestInputType";
+        $title = "Test input type";
         $value = null;
         $field = DatetimeField::create($name, $title, $value);
         $this->assertEquals('datetime-local', $field->getAttribute('type'));
+    }
+
+    public function testEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = null;
+        $field = DatetimeField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
+    }
+
+    public function testNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = '2020-01-01T01:30';
+        $field = DatetimeField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertTrue($result->isValid(), "Validation result is true");
+    }
+
+
+    public function testInvalidNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = 'invalid-value';
+        $field = DatetimeField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
     }
 }

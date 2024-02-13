@@ -20,7 +20,7 @@ trait Pattern
      * @param string $phpPattern optional regular expression for use in server side validation. If not provided, $pattern will be used. Helpful when the JS RegExp won't compile.
      * @return FormField
      */
-    public function setPattern(string $pattern, string $phpPattern = '')
+    public function setPattern(string $pattern, string $phpPattern = '') : self
     {
         $this->setAttribute('pattern', $pattern);
         $this->phpPattern = $phpPattern;
@@ -57,7 +57,7 @@ trait Pattern
                 return true;
             }
         }
-        $value = $this->dataValue();
+        $value = $this->Value() ?? '';
         $check = preg_match($pattern, $value, $matches);
         return $check === 1;
     }

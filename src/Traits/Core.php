@@ -9,17 +9,31 @@ namespace Codem\Utilities\HTML5;
 trait Core
 {
 
+    /**
+     * Convert a boolean value to a string for use in an attribute value
+     * Any value provided in that resolves to true will return 'true'
+     */
     protected function bool2str($value)
     {
         return $value ? 'true' : 'false';
     }
 
-    public function setSpellcheck($spellcheck)
+    /**
+     *  Set spellcheck attribute value
+     */
+    public function setSpellcheck($spellcheck) : self
     {
-        return $this->setAttribute('spellcheck', $this->bool2str($spellcheck));
+        if($spellcheck === "") {
+            return $this->setAttribute('spellcheck', '');
+        } else {
+            return $this->setAttribute('spellcheck', $this->bool2str($spellcheck));
+        }
     }
 
-    public function getSpellcheck()
+    /**
+     *  Get spellcheck attribute value
+     */
+    public function getSpellcheck() : string
     {
         return $this->getAttribute('spellcheck');
     }

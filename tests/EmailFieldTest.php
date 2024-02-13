@@ -3,15 +3,14 @@
 namespace Codem\Utilities\HTML5\Tests;
 
 use Codem\Utilities\HTML5\EmailField;
-use SilverStripe\Dev\SapphireTest;
 
 /**
  * EmailField input test
  */
 
-require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
+require_once(dirname(__FILE__) . '/Base.php');
 
-class EmailFieldTest extends AbstractFieldTest
+class EmailFieldTest extends Base
 {
 
     public function testDataList()
@@ -30,10 +29,41 @@ class EmailFieldTest extends AbstractFieldTest
 
     public function testInputType()
     {
-        $name = "TestDatalist";
-        $title = "Test datalist";
+        $name = "TestInputType";
+        $title = "Test input type";
         $value = null;
         $field = EmailField::create($name, $title, $value);
         $this->assertEquals('email', $field->getAttribute('type'));
+    }
+
+    public function testEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = null;
+        $field = EmailField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
+    }
+
+    public function testNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = 'someone@example.com';
+        $field = EmailField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertTrue($result->isValid());
+    }
+
+
+    public function testInvalidNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = 'invalid-email-value';
+        $field = EmailField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
     }
 }

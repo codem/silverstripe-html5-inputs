@@ -11,10 +11,19 @@ namespace Codem\Utilities\HTML5;
 class WeekField extends DateField
 {
 
+    /**
+     * @inheritdoc
+     */
     protected $inputType = 'week';
 
-    protected $datetime_format = "Y-\W";
+    /**
+     * @var string
+     */
+    protected $datetime_format = "Y-\WW";
 
+    /**
+     * @var string
+     */
     protected $example = "2020-W53";
 
 }

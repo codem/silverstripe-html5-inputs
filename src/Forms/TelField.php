@@ -27,14 +27,15 @@ class TelField extends TextField
     }
 
     /**
-     * TODO: use libphonenumber to validate the number
+     * There is no current spec for validating a phone number
+     * You should add your own validation routine to your form handling
+
+     * TODO: use libphonenumber to validate the number?
      *
-     * @param Validator $validator
-     *
-     * @return boolean
+     * @inheritdoc
      */
     public function validate($validator)
     {
-        return true;
+        return parent::validate($validator);
     }
 }
