@@ -3,15 +3,14 @@
 namespace Codem\Utilities\HTML5\Tests;
 
 use Codem\Utilities\HTML5\MonthField;
-use SilverStripe\Dev\SapphireTest;
 
 /**
  * MonthField input test
  */
 
-require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
+require_once(dirname(__FILE__) . '/Base.php');
 
-class MonthFieldTest extends AbstractFieldTest
+class MonthFieldTest extends Base
 {
 
     public function testDataList()
@@ -30,10 +29,41 @@ class MonthFieldTest extends AbstractFieldTest
 
     public function testInputType()
     {
-        $name = "TestDatalist";
-        $title = "Test datalist";
+        $name = "TestInputType";
+        $title = "Test input type";
         $value = null;
         $field = MonthField::create($name, $title, $value);
         $this->assertEquals('month', $field->getAttribute('type'));
+    }
+
+    public function testEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = null;
+        $field = MonthField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
+    }
+
+    public function testNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = '2020-01';
+        $field = MonthField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertTrue($result->isValid(), "Validation result is true");
+    }
+
+
+    public function testInvalidNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = 'invalid-value';
+        $field = MonthField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
     }
 }

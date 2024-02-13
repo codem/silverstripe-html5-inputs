@@ -16,23 +16,41 @@ class DateField extends TextField
     use Step;
     use MinMax;
 
+    /**
+     * @inheritdoc
+     */
     protected $inputType = 'date';
 
+    /**
+     * @var string
+     */
     protected $datetime_format = "Y-m-d";
 
+    /**
+     * @var string
+     */
     protected $example = "2020-12-31";
 
-    protected function formatDate(\Datetime $datetime)
+    /**
+     * Format a date based on the field's formatr string
+     */
+    protected function formatDate(\Datetime $datetime) : string
     {
         return $datetime->format($this->datetime_format);
     }
 
-    public function setMin(\DateTime $min)
+    /**
+     * Set minimum accepted date
+     */
+    public function setMin(\DateTime $min) : self
     {
         return $this->setAttribute('min', $this->formatDate($min));
     }
 
-    public function setMax(\DateTime $max)
+    /**
+     * Set maximum accepted date
+     */
+    public function setMax(\DateTime $max) : self
     {
         return $this->setAttribute('max', $this->formatDate($max));
     }
@@ -47,25 +65,27 @@ class DateField extends TextField
     public function validate($validator)
     {
         try {
-            $this->value = trim($this->value);
-            $dt = new \Datetime($this->value);
+            $value = trim($this->Value() ?? '');
+            if($value === '') {
+                // empty values are valid
+                return true;
+            }
+            $dt = new \Datetime($value);
             $formatted = $this->formatDate($dt);
-            if($formatted != $this->value) {
+            if($formatted != $value) {
                 throw new \Exception("Invalid date value passed");
             }
             return true;
         } catch (\Exception $e) {
             $validator->validationError(
                 $this->name,
-                sprintf(
-                    _t(
-                        'Codem\\Utilities\\HTML5\\DateField.VALIDATION',
-                        'Please enter a valid date in the format {format} (example:{example})',
-                        [
-                            'format' => $this->datetime_format,
-                            'example' => $this->example
-                        ]
-                    )
+                _t(
+                    'Codem\\Utilities\\HTML5\\DateField.VALIDATION',
+                    'Please enter a valid date in the format {format} (example:{example})',
+                    [
+                        'format' => $this->datetime_format,
+                        'example' => $this->example
+                    ]
                 ),
                 'validation'
             );

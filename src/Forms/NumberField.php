@@ -27,11 +27,11 @@ class NumberField extends TextField
      */
     public function validate($validator)
     {
-        $this->value = trim($this->value ?? '');
-        if($this->value === '' || is_null($this->value) ) {
+        $value = trim($this->Value() ?? '');
+        if($value === '') {
             // empty values are valid
             return true;
-        } else if (!is_numeric($this->value)) {
+        } else if (!is_numeric($value)) {
             $validator->validationError(
                 $this->name,
                 _t('Codem\\Utilities\\HTML5\\NumberField.VALIDATION', 'Please enter a number value'),

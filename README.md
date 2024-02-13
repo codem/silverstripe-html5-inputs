@@ -4,11 +4,11 @@ This module provides a set of bare bones HTML5 inputs with no Javascript or CSS.
 
 You can use these fields in your projects as-is or extend them to provide additional features or shims.
 
-The supported inputs are listed at https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input tagged 'HTML5'
+The supported inputs are listed at https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input:
 
 + colour (color)
-+ date, datetime, time
-+ email (extends core EmailField)
++ date, datetime-local, time
++ email (extends core Silverstripe EmailField)
 + month, week
 + number
 + range
@@ -20,9 +20,22 @@ Browser support for these fields is varying although nearly all modern browsers 
 
 Date, datetime and time fields are particularly difficult to support, due to locale differences and even different user expectations within those locales.
 
+## Traits
+
+Various field types support certain traits that allow setting/getting of common attributes
+
++ Step - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
++ DataList - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
++ Spellcheck - https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck
++ Min/Max - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min / max
++ Pattern - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#pattern
++ Multiple - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#multiple
+
 ### Datalist
 
-Certain inputs support a `<datalist>`, [e.g the colour field](./docs/en/002_inputs.md) to restrict initial selection. Browser implementation varies.
+Certain inputs support a `<datalist>`, [e.g the colour field](./docs/en/002_inputs.md) to restrict initial selection.
+
+This works somewhat like a `<select>` element, except that browser implementation and support varies.
 
 
 ## Requirements
@@ -53,7 +66,6 @@ Hopefully none !
 ## Maintainers
 
 + Codem
-
 
 ## Bugtracker
 

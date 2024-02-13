@@ -5,11 +5,17 @@ namespace Codem\Utilities\HTML5;
 trait Step
 {
 
-    public function setStep($step)
+    /**
+     * set step attribute value
+     */
+    public function setStep($step) : self
     {
         return $this->setAttribute('step', $step);
     }
 
+    /**
+     * get step attribute value
+     */
     public function getStep()
     {
         return $this->getAttribute('step');

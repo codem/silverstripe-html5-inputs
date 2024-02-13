@@ -3,16 +3,15 @@
 namespace Codem\Utilities\HTML5\Tests;
 
 use Codem\Utilities\HTML5\UrlField;
-use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\RequiredFields;
 
 /**
  * URLField input test
  */
 
-require_once(dirname(__FILE__) . '/AbstractFieldTest.php');
+require_once(dirname(__FILE__) . '/Base.php');
 
-class URLFieldTest extends AbstractFieldTest
+class UrlFieldTest extends Base
 {
 
     public function testDataList()
@@ -31,8 +30,8 @@ class URLFieldTest extends AbstractFieldTest
 
     public function testInputType()
     {
-        $name = "TestDatalist";
-        $title = "Test datalist";
+        $name = "TestInputType";
+        $title = "Test input type";
         $value = null;
         $field = UrlField::create($name, $title, $value);
         $this->assertEquals('url', $field->getAttribute('type'));
@@ -140,6 +139,37 @@ class URLFieldTest extends AbstractFieldTest
         $validator = new RequiredFields();
         $result = $field->validate($validator);
         $this->assertFalse($result, "Field should not validate for url {$url}");
+    }
+
+    public function testEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = null;
+        $field = UrlField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
+    }
+
+    public function testNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = 'https://example.com/something.txt';
+        $field = UrlField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertTrue($result->isValid(), "Validation result is true");
+    }
+
+
+    public function testInvalidNonEmptyFieldButRequiredValidation() {
+        $formName = "TestFormValidation";
+        $fieldName = "TestValidation";
+        $fieldTitle = "Test validation";
+        $fieldValue = 'invalid-value';
+        $field = UrlField::create($fieldName, $fieldTitle, $fieldValue);
+        $result = $this->getRequiredFieldValidationResult($field);
+        $this->assertFalse($result->isValid());
     }
 
 }

@@ -15,6 +15,9 @@ class SearchField extends TextField
     use Datalist;
     use Pattern;
 
+    /**
+     * @inheritdoc
+     */
     protected $inputType = 'search';
 
 }

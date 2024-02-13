@@ -10,10 +10,20 @@ namespace Codem\Utilities\HTML5;
 class DatetimeField extends DateField
 {
 
+    /**
+     * @inheritdoc
+     */
     protected $inputType = 'datetime-local';
 
+    /**
+     * @var string
+     * The browser will always send the datetime in this format
+     */
     protected $datetime_format = "Y-m-d\TH:i";
 
+    /**
+     * @var string
+     */
     protected $example = "2020-12-31T14:45";
 
 }

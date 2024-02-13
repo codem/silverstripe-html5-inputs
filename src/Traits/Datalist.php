@@ -43,7 +43,7 @@ trait Datalist
      * @param string $id optional datalist id attribute
      * @return FormField
      */
-    public function setDatalist(array $datalist, $id = null)
+    public function setDatalist(array $datalist, $id = null) : self
     {
         $this->inputDatalist = $this->createDataList($datalist);
         if(!$id) {

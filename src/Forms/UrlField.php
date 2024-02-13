@@ -51,8 +51,8 @@ class UrlField extends TextField
      */
     public function validate($validator)
     {
-        $value = $this->dataValue();
-        if(empty($value)) {
+        $value = trim($this->Value() ?? '');
+        if($value === '') {
             // Use RequiredFields to validate empty submissions
             return true;
         }
@@ -73,7 +73,7 @@ class UrlField extends TextField
         }
 
         // Check for valid URL format
-        if(!$this->parseURL($this->dataValue())) {
+        if(!$this->parseURL($value)) {
             $validator->validationError(
                 $this->getName(),
                 _t(

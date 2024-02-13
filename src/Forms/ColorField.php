@@ -7,13 +7,18 @@ use SilverStripe\Forms\Validator;
 
 /**
  * Provides a colour picker / field
+ *
  * @see https://www.w3.org/wiki/Html/Elements/input/color
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color#Value wrt value
  * @see https://html.spec.whatwg.org/multipage/input.html#color-state-(type=color) (default colour)
  *
- * Note that in the current spec, there is no empty default allowed for a colour input
- * and the browser will always send through the default colour in the spec (#000000) if none is supplied
+ * Default value
+ * =============
+ * The colour input is special in that it does not allow an empty value within the current spec.
+ * The browser will always send through the default colour in the spec (#000000) if none is supplied
+ *
+ * In this implementation, the default field value set is static::WHITE
  */
 class ColorField extends FormField
 {
@@ -75,11 +80,11 @@ class ColorField extends FormField
     /**
      * When the value is set, handle incorrect values
      * @param string $value an RGB colour value as a 'valid simple colour'
-     * @return void
      */
     public function setValue($value, $data = null)
     {
         $this->value = $this->getValidRGB($value);
+        return $this;
     }
 
 
@@ -142,7 +147,10 @@ class ColorField extends FormField
      * @param string $value
      * @param Validator $validator an optional validator. If provided specific errors will be stored in the validator
      */
-    public function isValidRGB(string $value, Validator $validator = null) : bool {
+    public function isValidRGB(?string $value, Validator $validator = null) : bool {
+
+        // Ensure a string value
+        $value = $value ?? '';
 
         // If input is not exactly seven characters long, then return an error.
         if(mb_strlen($value) != 7) {
@@ -202,7 +210,7 @@ class ColorField extends FormField
      */
     public function validate($validator)
     {
-        return $this->isValidRGB($this->value, $validator);
+        return $this->isValidRGB($this->Value(), $validator);
     }
 
 }
