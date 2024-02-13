@@ -73,4 +73,33 @@ class ColourInputTest extends AbstractFieldTest
         }
 
     }
+
+    public function testDefaultValueNoDefaultProvided() {
+        $name = "TestDefaultValue";
+        $title = "Test default value";
+        $value = null;
+        $field = ColourField::create($name, $title, $value);
+        $this->assertEquals(ColourField::WHITE, $field->getDefaultValue());
+        $this->assertEquals(ColourField::WHITE, $field->Value());
+    }
+
+    public function testDefaultValueDefaultProvided() {
+        $name = "TestDefaultValue";
+        $title = "Test default value";
+        $value = null;
+        $defaultValue = "#0099ab";
+        $field = ColourField::create($name, $title, $value, $defaultValue);
+        $this->assertEquals($defaultValue, $field->getDefaultValue());
+        $this->assertEquals($defaultValue, $field->Value());
+    }
+
+    public function testDefaultValueDefaultProvidedValueProvided() {
+        $name = "TestDefaultValue";
+        $title = "Test default value";
+        $value = "#cc889a";
+        $defaultValue = "#0099ab";
+        $field = ColourField::create($name, $title, $value, $defaultValue);
+        $this->assertEquals($defaultValue, $field->getDefaultValue());
+        $this->assertEquals($value, $field->Value());
+    }
 }
