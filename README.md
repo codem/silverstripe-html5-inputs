@@ -40,7 +40,8 @@ This works somewhat like a `<select>` element, except that browser implementatio
 
 ## Requirements
 
-+ silverstripe/framework ^4
++ silverstripe/framework ^5 (>= v1)
++ silverstripe/framework ^4 (< v1)
 
 ## Installation
 
