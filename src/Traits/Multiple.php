@@ -11,9 +11,8 @@ trait Multiple
     /**
      * Set whether an input can accept multiple values
      * @param bool $multiple when false, the attribute is removed
-     * @return FormField
      */
-    public function setMultiple(bool $multiple): self
+    public function setMultiple(bool $multiple): static
     {
         if ($multiple) {
             $this->setAttribute('multiple', 'multiple');

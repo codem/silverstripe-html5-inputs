@@ -53,7 +53,7 @@ class UrlFieldTest extends Base
         $this->assertEquals($expectedPattern, $pattern);
         $this->assertEquals($expectedPhpPattern, $expectedPhpPattern);
 
-        $validator = new RequiredFields();
+        $validator = RequiredFields::create();
         $result = $field->validate($validator);
         $this->assertFalse($result, "Field should not validate");
 
@@ -76,7 +76,7 @@ class UrlFieldTest extends Base
         $this->assertEquals($expectedPattern, $pattern);
         $this->assertEquals($expectedPhpPattern, $expectedPhpPattern);
 
-        $validator = new RequiredFields();
+        $validator = RequiredFields::create();
         $result = $field->validate($validator);
         $this->assertFalse($result, "Field should not validate");
     }
@@ -113,7 +113,7 @@ class UrlFieldTest extends Base
         $resultSchemes = $field->getSchemes();
         $this->assertEquals($schemes, $resultSchemes);
 
-        $validator = new RequiredFields();
+        $validator = RequiredFields::create();
         $result = $field->validate($validator);
         $this->assertFalse($result, "Field should not validate");
 
@@ -126,7 +126,7 @@ class UrlFieldTest extends Base
         $pattern = "^ftp://.+\.com";
         $phpPattern = "|^ftp://.+\.com|";
         $field->setPattern($pattern, $phpPattern);
-        $validator = new RequiredFields();
+        $validator = RequiredFields::create();
         $result = $field->validate($validator);
         $this->assertTrue($result, "Field should validate for url {$url}");
     }
@@ -138,7 +138,7 @@ class UrlFieldTest extends Base
         $pattern = "^ftp://.+\.example\.com";
         $phpPattern = "|^ftp://.+\.example\.com|";
         $field->setPattern($pattern, $phpPattern);
-        $validator = new RequiredFields();
+        $validator = RequiredFields::create();
         $result = $field->validate($validator);
         $this->assertFalse($result, "Field should not validate for url {$url}");
     }

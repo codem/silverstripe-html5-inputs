@@ -16,9 +16,8 @@ trait Pattern
     /**
      * Set a string pattern value for the pattern attribute
      * @param string $phpPattern optional regular expression for use in server side validation. If not provided, $pattern will be used. Helpful when the JS RegExp won't compile.
-     * @return FormField
      */
-    public function setPattern(string $pattern, string $phpPattern = ''): self
+    public function setPattern(string $pattern, string $phpPattern = ''): static
     {
         $this->setAttribute('pattern', $pattern);
         $this->phpPattern = $phpPattern;

@@ -11,15 +11,10 @@ use SilverStripe\View\ArrayData;
  */
 trait Datalist
 {
-    /**
-     * @var array
-     */
-    protected $inputDatalist;
 
-    /**
-     * @var string
-     */
-    protected $inputDatalistId;
+    protected ?ArrayList $inputDatalist;
+
+    protected string $inputDatalistId = '';
 
     /**
      * Return values  for a <datalist>
@@ -39,11 +34,10 @@ trait Datalist
 
     /**
      * Set a list of values rendered into a <datalist> tag (HTMLDataListElement)
-     * @param array $list
+     * @param array $datalist
      * @param string $id optional datalist id attribute
-     * @return FormField
      */
-    public function setDatalist(array $datalist, $id = null): self
+    public function setDatalist(array $datalist, $id = null): static
     {
         $this->inputDatalist = $this->createDataList($datalist);
         if (!$id) {

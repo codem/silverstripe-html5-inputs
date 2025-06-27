@@ -2,7 +2,7 @@
 
 namespace Codem\Utilities\HTML5;
 
-use Silverstripe\Forms\TextField;
+use SilverStripe\Forms\TextField;
 
 /**
  * Provides a date field
@@ -41,7 +41,7 @@ class DateField extends TextField
     /**
      * Set minimum accepted date
      */
-    public function setMin(\DateTime $min): self
+    public function setMin(\DateTime $min): static
     {
         return $this->setAttribute('min', $this->formatDate($min));
     }
@@ -49,7 +49,7 @@ class DateField extends TextField
     /**
      * Set maximum accepted date
      */
-    public function setMax(\DateTime $max): self
+    public function setMax(\DateTime $max): static
     {
         return $this->setAttribute('max', $this->formatDate($max));
     }
@@ -57,7 +57,7 @@ class DateField extends TextField
     /**
      * Validates for date value in format specified
      *
-     * @param Validator $validator
+     * @param \SilverStripe\Forms\Validator $validator
      *
      * @return bool
      */

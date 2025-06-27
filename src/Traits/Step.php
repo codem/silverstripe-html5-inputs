@@ -7,7 +7,7 @@ trait Step
     /**
      * set step attribute value
      */
-    public function setStep($step): self
+    public function setStep($step): static
     {
         return $this->setAttribute('step', $step);
     }

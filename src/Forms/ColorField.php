@@ -2,7 +2,7 @@
 
 namespace Codem\Utilities\HTML5;
 
-use Silverstripe\Forms\FormField;
+use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\Validator;
 
 /**
@@ -95,7 +95,7 @@ class ColorField extends FormField
      *
      * @param string $defaultValue an RGB colour value as a 'valid simple colour'
      */
-    public function setDefaultValue(string $defaultValue): self
+    public function setDefaultValue(string $defaultValue): static
     {
         $this->defaultValue = $this->getValidRGB($defaultValue);
         return $this;

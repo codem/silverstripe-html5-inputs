@@ -20,7 +20,7 @@ trait Core
     /**
      *  Set spellcheck attribute value
      */
-    public function setSpellcheck($spellcheck): self
+    public function setSpellcheck($spellcheck): static
     {
         if ($spellcheck === "") {
             return $this->setAttribute('spellcheck', '');

@@ -20,7 +20,7 @@ class NumberField extends TextField
     /**
      * Validates for numeric value
      *
-     * @param Validator $validator
+     * @param \SilverStripe\Forms\Validator $validator
      *
      * @return bool
      */

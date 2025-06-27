@@ -34,7 +34,7 @@ class RangeField extends TextField
     /**
      * Validates for value within range ?
      *
-     * @param Validator $validator
+     * @param \SilverStripe\Forms\Validator $validator
      *
      * @return bool
      */
@@ -94,6 +94,7 @@ class RangeField extends TextField
                     'validation'
                 );
             }
+            return $valid;
         } elseif (is_numeric($max)) {
             $valid = $value <= $max;
             if (!$valid) {
@@ -110,6 +111,7 @@ class RangeField extends TextField
                     'validation'
                 );
             }
+            return $valid;
         } else {
             // no range restriction, numeric value is valid
             return true;

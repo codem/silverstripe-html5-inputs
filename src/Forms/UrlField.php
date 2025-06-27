@@ -2,7 +2,7 @@
 
 namespace Codem\Utilities\HTML5;
 
-use Silverstripe\Forms\TextField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ValidationResult;
 
 /**
@@ -45,7 +45,7 @@ class UrlField extends TextField
     /**
      * TODO: use domain validation to validate the URL
      *
-     * @param Validator $validator
+     * @param \SilverStripe\Forms\Validator $validator
      *
      * @return bool
      */
