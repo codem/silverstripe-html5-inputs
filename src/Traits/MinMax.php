@@ -13,9 +13,6 @@ trait MinMax
         return $this->setAttribute('min', $min);
     }
 
-    /**
-     * @return mixed
-     */
     public function getMin(): ?string
     {
         return $this->getAttribute('min');
@@ -26,9 +23,6 @@ trait MinMax
         return $this->setAttribute('max', $max);
     }
 
-    /**
-     * @return mixed
-     */
     public function getMax(): ?string
     {
         return $this->getAttribute('max');

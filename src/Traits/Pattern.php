@@ -21,9 +21,6 @@ trait Pattern
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPattern(): ?string
     {
         return $this->getAttribute('pattern');
