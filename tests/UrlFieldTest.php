@@ -3,7 +3,6 @@
 namespace Codem\Utilities\HTML5\Tests;
 
 use Codem\Utilities\HTML5\UrlField;
-use SilverStripe\Forms\RequiredFields;
 
 /**
  * URLField input test
@@ -53,9 +52,9 @@ class UrlFieldTest extends Base
         $this->assertEquals($expectedPattern, $pattern);
         $this->assertEquals($expectedPhpPattern, $expectedPhpPattern);
 
-        $validator = RequiredFields::create();
-        $result = $field->validate($validator);
-        $this->assertFalse($result, "Field should not validate");
+        \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
+        $result = $field->validate();
+        $this->assertFalse($result->isValid(), "Field should not validate");
 
     }
 
@@ -76,9 +75,9 @@ class UrlFieldTest extends Base
         $this->assertEquals($expectedPattern, $pattern);
         $this->assertEquals($expectedPhpPattern, $expectedPhpPattern);
 
-        $validator = RequiredFields::create();
-        $result = $field->validate($validator);
-        $this->assertFalse($result, "Field should not validate");
+        \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
+        $result = $field->validate();
+        $this->assertFalse($result->isValid(), "Field should not validate");
     }
 
     public function testRequiredParts(): void
@@ -113,9 +112,9 @@ class UrlFieldTest extends Base
         $resultSchemes = $field->getSchemes();
         $this->assertEquals($schemes, $resultSchemes);
 
-        $validator = RequiredFields::create();
-        $result = $field->validate($validator);
-        $this->assertFalse($result, "Field should not validate");
+        \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
+        $result = $field->validate();
+        $this->assertFalse($result->isValid(), "Field should not validate");
 
     }
 
@@ -126,9 +125,9 @@ class UrlFieldTest extends Base
         $pattern = "^ftp://.+\.com";
         $phpPattern = "|^ftp://.+\.com|";
         $field->setPattern($pattern, $phpPattern);
-        $validator = RequiredFields::create();
-        $result = $field->validate($validator);
-        $this->assertTrue($result, "Field should validate for url {$url}");
+        \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
+        $result = $field->validate();
+        $this->assertTrue($result->isValid(), "Field should validate for url {$url}");
     }
 
     public function testWithPatternToFail(): void
@@ -138,9 +137,9 @@ class UrlFieldTest extends Base
         $pattern = "^ftp://.+\.example\.com";
         $phpPattern = "|^ftp://.+\.example\.com|";
         $field->setPattern($pattern, $phpPattern);
-        $validator = RequiredFields::create();
-        $result = $field->validate($validator);
-        $this->assertFalse($result, "Field should not validate for url {$url}");
+        \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
+        $result = $field->validate();
+        $this->assertFalse($result->isValid(), "Field should not validate for url {$url}");
     }
 
     public function testEmptyFieldButRequiredValidation(): void

@@ -2,6 +2,7 @@
 
 namespace Codem\Utilities\HTML5;
 
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Forms\TextField;
 
 /**
@@ -17,29 +18,23 @@ class NumberField extends TextField
 
     protected $inputType = 'number';
 
-    /**
-     * Validates for numeric value
-     *
-     * @param \SilverStripe\Forms\Validator $validator
-     *
-     * @return bool
-     */
     #[\Override]
-    public function validate($validator)
+    public function validate(): ValidationResult
     {
-        $value = trim($this->Value() ?? '');
+        $validationResult = parent::validate();
+        $value = trim($this->getValue() ?? '');
         if ($value === '') {
             // empty values are valid
-            return true;
+            return $validationResult;
         } elseif (!is_numeric($value)) {
-            $validator->validationError(
+            $validationResult->addFieldError(
                 $this->name,
                 _t('Codem\\Utilities\\HTML5\\NumberField.VALIDATION', 'Please enter a number value'),
-                'validation'
+                ValidationResult::TYPE_ERROR
             );
-            return false;
+            return $validationResult;
         } else {
-            return true;
+            return $validationResult;
         }
     }
 

@@ -15,18 +15,18 @@ class RangeFieldTest extends Base
     public function testDataList(): void
     {
         $options = [
-            1 => 1,
-            2 => 2,
-            3 => 3,
-            5 => 5,
-            8 => 8
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '5' => '5',
+            '8' => '8'
         ];
         $name = "TestDatalist";
         $title = "Test datalist";
         $value = null;
         $field = RangeField::create($name, $title, $value);
-        $field->setMin(1);
-        $field->setMax(13);
+        $field->setMin('1');
+        $field->setMax('13');
         $this->performDataListTest($field, $options);
     }
 
@@ -53,7 +53,7 @@ class RangeFieldTest extends Base
     {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
-        $fieldValue = 3;
+        $fieldValue = '3';
         $field = RangeField::create($fieldName, $fieldTitle, $fieldValue);
         $result = $this->getRequiredFieldValidationResult($field);
         $this->assertTrue($result->isValid(), "Validation result is true");

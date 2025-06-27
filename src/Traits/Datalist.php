@@ -2,28 +2,24 @@
 
 namespace Codem\Utilities\HTML5;
 
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\View\ArrayData;
-
 /**
  * Datalist trait used for supporting inputs that can have a <datalist>
  * @author James
  */
 trait Datalist
 {
-
-    protected ?ArrayList $inputDatalist = null;
+    protected ?\SilverStripe\Model\List\ArrayList $inputDatalist = null;
 
     protected string $inputDatalistId = '';
 
     /**
      * Return values  for a <datalist>
      */
-    protected function createDataList(array $datalist): ArrayList
+    protected function createDataList(array $datalist): \SilverStripe\Model\List\ArrayList
     {
-        $list = ArrayList::create();
+        $list = \SilverStripe\Model\List\ArrayList::create();
         foreach ($datalist as $value => $label) {
-            $list->push(ArrayData::create([
+            $list->push(\SilverStripe\Model\ArrayData::create([
                 'Value' => $value,
                 'Label' => $label
             ]));
@@ -34,7 +30,6 @@ trait Datalist
 
     /**
      * Set a list of values rendered into a <datalist> tag (HTMLDataListElement)
-     * @param array $datalist
      * @param string $id optional datalist id attribute
      */
     public function setDatalist(array $datalist, $id = null): static
@@ -49,7 +44,7 @@ trait Datalist
         return $this;
     }
 
-    public function getDatalist(): ?ArrayList
+    public function getDatalist(): ?\SilverStripe\Model\List\ArrayList
     {
         return $this->inputDatalist;
     }
@@ -57,7 +52,7 @@ trait Datalist
     /**
      * Return datalist id value
      */
-    public function Datalist(): ?ArrayList
+    public function Datalist(): ?\SilverStripe\Model\List\ArrayList
     {
         return $this->getDatalist();
     }
