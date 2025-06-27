@@ -8,10 +8,8 @@ namespace Codem\Utilities\HTML5;
  */
 trait Pattern
 {
-    /**
-     * @var string
-     */
-    protected $phpPattern = '';
+
+    protected string $phpPattern = '';
 
     /**
      * Set a string pattern value for the pattern attribute
