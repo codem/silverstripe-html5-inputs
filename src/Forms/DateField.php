@@ -10,7 +10,6 @@ use Silverstripe\Forms\TextField;
  */
 class DateField extends TextField
 {
-
     use Core;
     use Datalist;
     use Step;
@@ -34,7 +33,7 @@ class DateField extends TextField
     /**
      * Format a date based on the field's formatr string
      */
-    protected function formatDate(\Datetime $datetime) : string
+    protected function formatDate(\Datetime $datetime): string
     {
         return $datetime->format($this->datetime_format);
     }
@@ -42,7 +41,7 @@ class DateField extends TextField
     /**
      * Set minimum accepted date
      */
-    public function setMin(\DateTime $min) : self
+    public function setMin(\DateTime $min): self
     {
         return $this->setAttribute('min', $this->formatDate($min));
     }
@@ -50,7 +49,7 @@ class DateField extends TextField
     /**
      * Set maximum accepted date
      */
-    public function setMax(\DateTime $max) : self
+    public function setMax(\DateTime $max): self
     {
         return $this->setAttribute('max', $this->formatDate($max));
     }
@@ -66,13 +65,13 @@ class DateField extends TextField
     {
         try {
             $value = trim($this->Value() ?? '');
-            if($value === '') {
+            if ($value === '') {
                 // empty values are valid
                 return true;
             }
             $dt = new \Datetime($value);
             $formatted = $this->formatDate($dt);
-            if($formatted != $value) {
+            if ($formatted != $value) {
                 throw new \Exception("Invalid date value passed");
             }
             return true;

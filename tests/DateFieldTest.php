@@ -12,7 +12,6 @@ require_once(dirname(__FILE__) . '/Base.php');
 
 class DateFieldTest extends Base
 {
-
     public function testDataList()
     {
         $options = [
@@ -36,7 +35,8 @@ class DateFieldTest extends Base
         $this->assertEquals('date', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation() {
+    public function testEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
@@ -46,7 +46,8 @@ class DateFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation() {
+    public function testNonEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
@@ -57,7 +58,8 @@ class DateFieldTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation() {
+    public function testInvalidNonEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";

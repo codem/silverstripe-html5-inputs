@@ -13,7 +13,6 @@ require_once(dirname(__FILE__) . '/Base.php');
 
 class ColourInputTest extends Base
 {
-
     public function testDataList()
     {
         $options = [
@@ -53,7 +52,7 @@ class ColourInputTest extends Base
         ];
 
         $i = 1;
-        foreach($colours as $colour => $expected) {
+        foreach ($colours as $colour => $expected) {
             // check field with value creation
             $name = $title = "field1{$i}";
             $field1 = ColourField::create($name, $title, $colour);
@@ -73,7 +72,8 @@ class ColourInputTest extends Base
 
     }
 
-    public function testDefaultValueNoDefaultProvided() {
+    public function testDefaultValueNoDefaultProvided()
+    {
         $name = "TestDefaultValue";
         $title = "Test default value";
         $value = null;
@@ -82,7 +82,8 @@ class ColourInputTest extends Base
         $this->assertEquals(ColourField::WHITE, $field->Value());
     }
 
-    public function testDefaultValueDefaultProvided() {
+    public function testDefaultValueDefaultProvided()
+    {
         $name = "TestDefaultValue";
         $title = "Test default value";
         $value = null;
@@ -92,7 +93,8 @@ class ColourInputTest extends Base
         $this->assertEquals($defaultValue, $field->Value());
     }
 
-    public function testDefaultValueDefaultProvidedValueProvided() {
+    public function testDefaultValueDefaultProvidedValueProvided()
+    {
         $name = "TestDefaultValue";
         $title = "Test default value";
         $value = "#cc889a";
@@ -102,7 +104,8 @@ class ColourInputTest extends Base
         $this->assertEquals($value, $field->Value());
     }
 
-    public function testEmptyFieldButRequiredValidation() {
+    public function testEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
@@ -113,7 +116,8 @@ class ColourInputTest extends Base
         $this->assertTrue($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation() {
+    public function testNonEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
@@ -124,7 +128,8 @@ class ColourInputTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation() {
+    public function testInvalidNonEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";

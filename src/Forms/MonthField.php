@@ -9,7 +9,6 @@ namespace Codem\Utilities\HTML5;
  */
 class MonthField extends DateField
 {
-
     protected $inputType = 'month';
 
     protected $datetime_format = "Y-m";

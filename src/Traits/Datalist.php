@@ -11,7 +11,6 @@ use SilverStripe\View\ArrayData;
  */
 trait Datalist
 {
-
     /**
      * @var array
      */
@@ -25,10 +24,10 @@ trait Datalist
     /**
      * Return values  for a <datalist>
      */
-    protected function createDataList(array $datalist) : ArrayList
+    protected function createDataList(array $datalist): ArrayList
     {
         $list = ArrayList::create();
-        foreach($datalist as $value => $label) {
+        foreach ($datalist as $value => $label) {
             $list->push(ArrayData::create([
                 'Value' => $value,
                 'Label' => $label
@@ -43,10 +42,10 @@ trait Datalist
      * @param string $id optional datalist id attribute
      * @return FormField
      */
-    public function setDatalist(array $datalist, $id = null) : self
+    public function setDatalist(array $datalist, $id = null): self
     {
         $this->inputDatalist = $this->createDataList($datalist);
-        if(!$id) {
+        if (!$id) {
             $id = $this->ID() . "_datalist";
         }
         $this->inputDatalistId = $id;
@@ -54,7 +53,7 @@ trait Datalist
         return $this;
     }
 
-    public function getDatalist() : ?ArrayList
+    public function getDatalist(): ?ArrayList
     {
         return $this->inputDatalist;
     }
@@ -62,7 +61,7 @@ trait Datalist
     /**
      * Return datalist id value
      */
-    public function Datalist() : ?ArrayList
+    public function Datalist(): ?ArrayList
     {
         return $this->getDatalist();
     }
@@ -70,7 +69,7 @@ trait Datalist
     /**
      * Return datalist id value
      */
-    public function DatalistID() : ?string
+    public function DatalistID(): ?string
     {
         return $this->inputDatalistId;
     }

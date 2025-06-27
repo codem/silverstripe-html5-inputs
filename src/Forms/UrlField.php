@@ -10,7 +10,6 @@ use SilverStripe\ORM\ValidationResult;
  */
 class UrlField extends TextField
 {
-
     use Core;
     use Datalist;
     use Pattern;
@@ -52,13 +51,13 @@ class UrlField extends TextField
     public function validate($validator)
     {
         $value = trim($this->Value() ?? '');
-        if($value === '') {
+        if ($value === '') {
             // Use RequiredFields to validate empty submissions
             return true;
         }
 
         $check = $this->validateValueAgainstPattern();
-        if($check != 1) {
+        if ($check != 1) {
             // validation failed
             $validator->validationError(
                 $this->getName(),
@@ -73,7 +72,7 @@ class UrlField extends TextField
         }
 
         // Check for valid URL format
-        if(!$this->parseURL($value)) {
+        if (!$this->parseURL($value)) {
             $validator->validationError(
                 $this->getName(),
                 _t(
@@ -98,15 +97,15 @@ class UrlField extends TextField
      * Parse a possible URL string
      * If the second parameter is provided, the URL must have those parts
      */
-    public function parseURL(string $url) : bool
+    public function parseURL(string $url): bool
     {
-        if($url == '') {
+        if ($url == '') {
             // an empty URL is a valid URL
             return true;
         }
         // Check for valid URL format
         $parts = parse_url($url);
-        if(empty($this->requiredParts)) {
+        if (empty($this->requiredParts)) {
             return !empty($parts);
         } else {
             // ensure all of the required parts are present in all of the keys

@@ -10,7 +10,6 @@ use SilverStripe\Forms\TextField;
  */
 class SearchField extends TextField
 {
-
     use Core;
     use Datalist;
     use Pattern;

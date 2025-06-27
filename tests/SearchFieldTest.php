@@ -12,7 +12,6 @@ require_once(dirname(__FILE__) . '/Base.php');
 
 class SearchFieldTest extends Base
 {
-
     public function testDataList()
     {
         $options = [
@@ -37,7 +36,8 @@ class SearchFieldTest extends Base
         $this->assertEquals('search', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation() {
+    public function testEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
@@ -47,7 +47,8 @@ class SearchFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation() {
+    public function testNonEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";

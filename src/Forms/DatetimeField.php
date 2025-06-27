@@ -9,7 +9,6 @@ namespace Codem\Utilities\HTML5;
  */
 class DatetimeField extends DateField
 {
-
     /**
      * @inheritdoc
      */

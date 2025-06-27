@@ -9,7 +9,6 @@ use SilverStripe\Forms\TextField;
  */
 class RangeField extends TextField
 {
-
     use Core;
     use Datalist;
     use Step;
@@ -42,11 +41,11 @@ class RangeField extends TextField
     public function validate($validator)
     {
         $value = trim($this->Value() ?? '');
-        if($value === '') {
+        if ($value === '') {
             // empty values are valid
             return true;
         }
-        if(!is_numeric($value)) {
+        if (!is_numeric($value)) {
             $validator->validationError(
                 $this->name,
                 _t('Codem\\Utilities\\HTML5\\RangeField.VALIDATION_NUMERIC', 'Please enter a number value'),
@@ -57,9 +56,9 @@ class RangeField extends TextField
         }
         $max = $this->getMax();
         $min = $this->getMin();
-        if(is_numeric($min) && is_numeric($max)) {
+        if (is_numeric($min) && is_numeric($max)) {
             $valid = $value >= $min  &&  $value <= $max;
-            if(!$valid) {
+            if (!$valid) {
                 // out of range
                 $validator->validationError(
                     $this->name,
@@ -75,9 +74,9 @@ class RangeField extends TextField
                 );
             }
             return $valid;
-        } else if(is_numeric($min)) {
+        } elseif (is_numeric($min)) {
             $valid = $value >= $min;
-            if(!$valid) {
+            if (!$valid) {
                 // out of range
                 $validator->validationError(
                     $this->name,
@@ -91,9 +90,9 @@ class RangeField extends TextField
                     'validation'
                 );
             }
-        } else if(is_numeric($max)) {
+        } elseif (is_numeric($max)) {
             $valid = $value <= $max;
-            if(!$valid) {
+            if (!$valid) {
                 // out of range
                 $validator->validationError(
                     $this->name,

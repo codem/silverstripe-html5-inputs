@@ -8,7 +8,6 @@ namespace Codem\Utilities\HTML5;
  */
 class TimeField extends DateField
 {
-
     protected $inputType = 'time';
 
     protected $datetime_format = "H:i";

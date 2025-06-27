@@ -12,7 +12,6 @@ require_once(dirname(__FILE__) . '/Base.php');
 
 class NumberFieldTest extends Base
 {
-
     public function testDataList()
     {
         $options = [
@@ -38,7 +37,8 @@ class NumberFieldTest extends Base
         $this->assertEquals('number', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation() {
+    public function testEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
@@ -48,7 +48,8 @@ class NumberFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation() {
+    public function testNonEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
@@ -59,7 +60,8 @@ class NumberFieldTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation() {
+    public function testInvalidNonEmptyFieldButRequiredValidation()
+    {
         $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
