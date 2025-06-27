@@ -54,7 +54,7 @@ class UrlFieldTest extends Base
 
         \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
         $result = $field->validate();
-        $this->assertFalse($result, "Field should not validate");
+        $this->assertFalse($result->isValid(), "Field should not validate");
 
     }
 
@@ -77,7 +77,7 @@ class UrlFieldTest extends Base
 
         \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
         $result = $field->validate();
-        $this->assertFalse($result, "Field should not validate");
+        $this->assertFalse($result->isValid(), "Field should not validate");
     }
 
     public function testRequiredParts(): void
@@ -114,7 +114,7 @@ class UrlFieldTest extends Base
 
         \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
         $result = $field->validate();
-        $this->assertFalse($result, "Field should not validate");
+        $this->assertFalse($result->isValid(), "Field should not validate");
 
     }
 
@@ -127,7 +127,7 @@ class UrlFieldTest extends Base
         $field->setPattern($pattern, $phpPattern);
         \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
         $result = $field->validate();
-        $this->assertTrue($result, "Field should validate for url {$url}");
+        $this->assertTrue($result->isValid(), "Field should validate for url {$url}");
     }
 
     public function testWithPatternToFail(): void
@@ -139,7 +139,7 @@ class UrlFieldTest extends Base
         $field->setPattern($pattern, $phpPattern);
         \SilverStripe\Forms\Validation\RequiredFieldsValidator::create();
         $result = $field->validate();
-        $this->assertFalse($result, "Field should not validate for url {$url}");
+        $this->assertFalse($result->isValid(), "Field should not validate for url {$url}");
     }
 
     public function testEmptyFieldButRequiredValidation(): void

@@ -27,9 +27,9 @@ class RangeField extends TextField
     {
         parent::__construct($name, $title, $value);
         // Set sensible defaults per MDN
-        $this->setMin(0);
-        $this->setMax(100);
-        $this->setStep(1);
+        $this->setMin('0');
+        $this->setMax('100');
+        $this->setStep('1');
     }
 
     #[\Override]

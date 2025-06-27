@@ -8,7 +8,7 @@ namespace Codem\Utilities\HTML5;
  */
 trait MinMax
 {
-    public function setMin($min): static
+    public function setMin(string $min): static
     {
         return $this->setAttribute('min', $min);
     }
@@ -16,12 +16,12 @@ trait MinMax
     /**
      * @return mixed
      */
-    public function getMin()
+    public function getMin(): ?string
     {
         return $this->getAttribute('min');
     }
 
-    public function setMax($max): static
+    public function setMax(string $max): static
     {
         return $this->setAttribute('max', $max);
     }
@@ -29,7 +29,7 @@ trait MinMax
     /**
      * @return mixed
      */
-    public function getMax()
+    public function getMax(): ?string
     {
         return $this->getAttribute('max');
     }
