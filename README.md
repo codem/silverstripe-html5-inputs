@@ -59,7 +59,6 @@ See [License](./LICENSE.md)
 
 * [Documentation](./docs/en/001_index.md)
 
-
 ## Configuration
 
 Hopefully none !
