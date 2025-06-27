@@ -12,7 +12,7 @@ use SilverStripe\View\ArrayData;
 trait Datalist
 {
 
-    protected ?ArrayList $inputDatalist;
+    protected ?ArrayList $inputDatalist = null;
 
     protected string $inputDatalistId = '';
 
