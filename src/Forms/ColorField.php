@@ -153,7 +153,7 @@ class ColorField extends FormField
 
         // If input is not exactly seven characters long, then return an error.
         if (mb_strlen($value) != 7) {
-            if(!is_null($validationResult)) {
+            if (!is_null($validationResult)) {
                 $validationResult->addFieldError(
                     $this->name,
                     _t(
@@ -169,7 +169,7 @@ class ColorField extends FormField
 
         // If the first character in input is not a U+0023 NUMBER SIGN character (#), then return an error.
         if (!str_starts_with($value, "#")) {
-            if(!is_null($validationResult)) {
+            if (!is_null($validationResult)) {
                 $validationResult->addFieldError(
                     $this->name,
                     _t(
@@ -186,7 +186,7 @@ class ColorField extends FormField
         // If the last six characters of input are not all ASCII hex digits, then return an error.
         $hex = trim($value, "#");
         if (ctype_xdigit($hex) === false) {
-            if(!is_null($validationResult)) {
+            if (!is_null($validationResult)) {
                 $validationResult->addFieldError(
                     $this->name,
                     _t(
