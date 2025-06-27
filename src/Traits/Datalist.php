@@ -11,7 +11,6 @@ use SilverStripe\View\ArrayData;
  */
 trait Datalist
 {
-
     protected ?ArrayList $inputDatalist = null;
 
     protected string $inputDatalistId = '';
