@@ -2,6 +2,7 @@
 
 namespace Codem\Utilities\HTML5;
 
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Forms\TextField;
 
 /**
@@ -31,30 +32,23 @@ class RangeField extends TextField
         $this->setStep(1);
     }
 
-    /**
-     * Validates for value within range ?
-     *
-     * @param \SilverStripe\Forms\Validator $validator
-     *
-     * @return bool
-     */
     #[\Override]
-    public function validate($validator)
+    public function validate(): ValidationResult
     {
-        $value = trim($this->Value() ?? '');
+        $validationResult = parent::validate();
+        $value = trim($this->getValue() ?? '');
         if ($value === '') {
             // empty values are valid
-            return true;
+            return $validationResult;
         }
 
         if (!is_numeric($value)) {
-            $validator->validationError(
+            $validationResult->addFieldError(
                 $this->name,
                 _t('Codem\\Utilities\\HTML5\\RangeField.VALIDATION_NUMERIC', 'Please enter a number value'),
-                'validation'
+                ValidationResult::TYPE_ERROR
             );
-            // value is not valid
-            return false;
+            return $validationResult;
         }
 
         $max = $this->getMax();
@@ -63,7 +57,7 @@ class RangeField extends TextField
             $valid = $value >= $min  &&  $value <= $max;
             if (!$valid) {
                 // out of range
-                $validator->validationError(
+                $validationResult->addFieldError(
                     $this->name,
                     _t(
                         'Codem\\Utilities\\HTML5\\RangeField.VALIDATION_BOUNDS',
@@ -73,16 +67,16 @@ class RangeField extends TextField
                             'max' => $max
                         ]
                     ),
-                    'validation'
+                    ValidationResult::TYPE_ERROR
                 );
             }
 
-            return $valid;
+            return $validationResult;
         } elseif (is_numeric($min)) {
             $valid = $value >= $min;
             if (!$valid) {
                 // out of range
-                $validator->validationError(
+                $validationResult->addFieldError(
                     $this->name,
                     _t(
                         'Codem\\Utilities\\HTML5\\RangeField.VALIDATION_BOUNDS',
@@ -91,15 +85,16 @@ class RangeField extends TextField
                             'min' => $min
                         ]
                     ),
-                    'validation'
+                    ValidationResult::TYPE_ERROR
                 );
             }
-            return $valid;
+
+            return $validationResult;
         } elseif (is_numeric($max)) {
             $valid = $value <= $max;
             if (!$valid) {
                 // out of range
-                $validator->validationError(
+                $validationResult->addFieldError(
                     $this->name,
                     _t(
                         'Codem\\Utilities\\HTML5\\RangeField.VALIDATION_BOUNDS',
@@ -108,13 +103,14 @@ class RangeField extends TextField
                             'max' => $max
                         ]
                     ),
-                    'validation'
+                    ValidationResult::TYPE_ERROR
                 );
             }
-            return $valid;
+
+            return $validationResult;
         } else {
             // no range restriction, numeric value is valid
-            return true;
+            return $validationResult;
         }
     }
 

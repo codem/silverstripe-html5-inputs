@@ -49,7 +49,7 @@ trait Pattern
             }
         }
 
-        $value = $this->Value() ?? '';
+        $value = $this->getValue() ?? '';
         $check = preg_match($pattern, (string) $value, $matches);
         return $check === 1;
     }

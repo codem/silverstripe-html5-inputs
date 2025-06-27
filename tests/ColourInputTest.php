@@ -57,14 +57,14 @@ class ColourInputTest extends Base
             $name = "field1{$i}";
             $title = "field1{$i}";
             $field1 = ColourField::create($name, $title, $colour);
-            $out = $field1->Value();
+            $out = $field1->getValue();
             $this->assertEquals($expected, $out, "The output {$out} does not match expected");
             // check set/get value
             $name = "field2{$i}";
             $title = "field2{$i}";
             $field2 = ColourField::create($name, $title, $out);
             $field2->setValue($colour);
-            $out = $field2->Value();
+            $out = $field2->getValue();
             $this->assertEquals($expected, $out, "The output {$out} does not match expected (set/get value)");
 
             $i++;
@@ -80,7 +80,7 @@ class ColourInputTest extends Base
         $value = null;
         $field = ColourField::create($name, $title, $value);
         $this->assertEquals(ColourField::WHITE, $field->getDefaultValue());
-        $this->assertEquals(ColourField::WHITE, $field->Value());
+        $this->assertEquals(ColourField::WHITE, $field->getValue());
     }
 
     public function testDefaultValueDefaultProvided(): void
@@ -91,7 +91,7 @@ class ColourInputTest extends Base
         $defaultValue = "#0099ab";
         $field = ColourField::create($name, $title, $value, $defaultValue);
         $this->assertEquals($defaultValue, $field->getDefaultValue());
-        $this->assertEquals($defaultValue, $field->Value());
+        $this->assertEquals($defaultValue, $field->getValue());
     }
 
     public function testDefaultValueDefaultProvidedValueProvided(): void
@@ -102,7 +102,7 @@ class ColourInputTest extends Base
         $defaultValue = "#0099ab";
         $field = ColourField::create($name, $title, $value, $defaultValue);
         $this->assertEquals($defaultValue, $field->getDefaultValue());
-        $this->assertEquals($value, $field->Value());
+        $this->assertEquals($value, $field->getValue());
     }
 
     public function testEmptyFieldButRequiredValidation(): void
