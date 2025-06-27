@@ -8,12 +8,11 @@ use Codem\Utilities\HTML5\NumberField;
  * NumberField input test
  */
 
-require_once(dirname(__FILE__) . '/Base.php');
+require_once(__DIR__ . '/Base.php');
 
 class NumberFieldTest extends Base
 {
-
-    public function testDataList()
+    public function testDataList(): void
     {
         $options = [
             1 => 1,
@@ -29,7 +28,7 @@ class NumberFieldTest extends Base
         $this->performDataListTest($field, $options);
     }
 
-    public function testInputType()
+    public function testInputType(): void
     {
         $name = "TestInputType";
         $title = "Test input type";
@@ -38,8 +37,8 @@ class NumberFieldTest extends Base
         $this->assertEquals('number', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = null;
@@ -48,8 +47,8 @@ class NumberFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testNonEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 3;
@@ -59,8 +58,8 @@ class NumberFieldTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testInvalidNonEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 'abcd';

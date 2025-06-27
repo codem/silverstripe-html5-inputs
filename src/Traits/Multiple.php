@@ -8,19 +8,18 @@ namespace Codem\Utilities\HTML5;
  */
 trait Multiple
 {
-
     /**
      * Set whether an input can accept multiple values
      * @param bool $multiple when false, the attribute is removed
-     * @return FormField
      */
-    public function setMultiple(bool $multiple) : self
+    public function setMultiple(bool $multiple): static
     {
-        if($multiple) {
+        if ($multiple) {
             $this->setAttribute('multiple', 'multiple');
         } else {
             unset($this->attributes['multiple']);
         }
+
         return $this;
     }
 

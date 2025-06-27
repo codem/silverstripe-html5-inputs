@@ -10,7 +10,6 @@ use SilverStripe\Forms\EmailField as CoreEmailField;
  */
 class EmailField extends CoreEmailField
 {
-
     use Core;
     use Datalist;
     use Pattern;

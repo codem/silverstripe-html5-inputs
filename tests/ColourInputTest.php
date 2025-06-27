@@ -9,12 +9,11 @@ use Codem\Utilities\HTML5\ColourField;
  * ColourField input test
  */
 
-require_once(dirname(__FILE__) . '/Base.php');
+require_once(__DIR__ . '/Base.php');
 
 class ColourInputTest extends Base
 {
-
-    public function testDataList()
+    public function testDataList(): void
     {
         $options = [
             '#ff0000' => 'Red',
@@ -30,7 +29,7 @@ class ColourInputTest extends Base
         $this->performDataListTest($field, $options);
     }
 
-    public function testInputType()
+    public function testInputType(): void
     {
         $name = "TestInputType";
         $title = "Test input type";
@@ -39,7 +38,7 @@ class ColourInputTest extends Base
         $this->assertEquals('color', $field->getAttribute('type'));
     }
 
-    public function testColourInput()
+    public function testColourInput(): void
     {
         $colours = [
             // in => expected
@@ -53,15 +52,16 @@ class ColourInputTest extends Base
         ];
 
         $i = 1;
-        foreach($colours as $colour => $expected) {
+        foreach ($colours as $colour => $expected) {
             // check field with value creation
-            $name = $title = "field1{$i}";
+            $name = "field1{$i}";
+            $title = "field1{$i}";
             $field1 = ColourField::create($name, $title, $colour);
             $out = $field1->Value();
             $this->assertEquals($expected, $out, "The output {$out} does not match expected");
-
             // check set/get value
-            $name = $title = "field2{$i}";
+            $name = "field2{$i}";
+            $title = "field2{$i}";
             $field2 = ColourField::create($name, $title, $out);
             $field2->setValue($colour);
             $out = $field2->Value();
@@ -73,7 +73,8 @@ class ColourInputTest extends Base
 
     }
 
-    public function testDefaultValueNoDefaultProvided() {
+    public function testDefaultValueNoDefaultProvided(): void
+    {
         $name = "TestDefaultValue";
         $title = "Test default value";
         $value = null;
@@ -82,7 +83,8 @@ class ColourInputTest extends Base
         $this->assertEquals(ColourField::WHITE, $field->Value());
     }
 
-    public function testDefaultValueDefaultProvided() {
+    public function testDefaultValueDefaultProvided(): void
+    {
         $name = "TestDefaultValue";
         $title = "Test default value";
         $value = null;
@@ -92,7 +94,8 @@ class ColourInputTest extends Base
         $this->assertEquals($defaultValue, $field->Value());
     }
 
-    public function testDefaultValueDefaultProvidedValueProvided() {
+    public function testDefaultValueDefaultProvidedValueProvided(): void
+    {
         $name = "TestDefaultValue";
         $title = "Test default value";
         $value = "#cc889a";
@@ -102,8 +105,8 @@ class ColourInputTest extends Base
         $this->assertEquals($value, $field->Value());
     }
 
-    public function testEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = null;
@@ -113,8 +116,8 @@ class ColourInputTest extends Base
         $this->assertTrue($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testNonEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = '#cc33ff';
@@ -124,8 +127,8 @@ class ColourInputTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testInvalidNonEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 'abcd';

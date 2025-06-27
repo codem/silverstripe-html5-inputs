@@ -16,7 +16,6 @@ use SilverStripe\ORM\ValidationResult;
 
 abstract class Base extends SapphireTest
 {
-
     protected $usesDatabase = false;
 
     protected function performDataListTest($field, $options)
@@ -37,7 +36,8 @@ abstract class Base extends SapphireTest
 
     }
 
-    public function getRequiredFieldValidationResult(FormField $field) : ValidationResult {
+    public function getRequiredFieldValidationResult(FormField $field): ValidationResult
+    {
         $controller = Controller::create();
         $validator = RequiredFields::create([$field->getName()]);
         $form = Form::create(
@@ -47,8 +47,7 @@ abstract class Base extends SapphireTest
             FieldList::create(),
             $validator
         );
-        $result = $form->validationResult();
-        return $result;
+        return $form->validationResult();
     }
 
 }

@@ -7,7 +7,6 @@ namespace Codem\Utilities\HTML5;
  */
 class ColourField extends ColorField
 {
-
     protected $template = "Codem/Utilities/HTML5/ColorField";
 
 }

@@ -2,7 +2,7 @@
 
 namespace Codem\Utilities\HTML5;
 
-use Silverstripe\Forms\TextField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ValidationResult;
 
 /**
@@ -10,7 +10,6 @@ use SilverStripe\ORM\ValidationResult;
  */
 class UrlField extends TextField
 {
-
     use Core;
     use Datalist;
     use Pattern;
@@ -29,6 +28,7 @@ class UrlField extends TextField
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function Type()
     {
         return 'url text';
@@ -45,20 +45,21 @@ class UrlField extends TextField
     /**
      * TODO: use domain validation to validate the URL
      *
-     * @param Validator $validator
+     * @param \SilverStripe\Forms\Validator $validator
      *
-     * @return boolean
+     * @return bool
      */
+    #[\Override]
     public function validate($validator)
     {
         $value = trim($this->Value() ?? '');
-        if($value === '') {
+        if ($value === '') {
             // Use RequiredFields to validate empty submissions
             return true;
         }
 
         $check = $this->validateValueAgainstPattern();
-        if($check != 1) {
+        if ($check != 1) {
             // validation failed
             $validator->validationError(
                 $this->getName(),
@@ -73,7 +74,7 @@ class UrlField extends TextField
         }
 
         // Check for valid URL format
-        if(!$this->parseURL($value)) {
+        if (!$this->parseURL($value)) {
             $validator->validationError(
                 $this->getName(),
                 _t(
@@ -88,7 +89,7 @@ class UrlField extends TextField
         return true;
     }
 
-    public function setRequiredParts(array $requiredParts)
+    public function setRequiredParts(array $requiredParts): static
     {
         $this->requiredParts = $requiredParts;
         return $this;
@@ -98,15 +99,16 @@ class UrlField extends TextField
      * Parse a possible URL string
      * If the second parameter is provided, the URL must have those parts
      */
-    public function parseURL(string $url) : bool
+    public function parseURL(string $url): bool
     {
-        if($url == '') {
+        if ($url === '') {
             // an empty URL is a valid URL
             return true;
         }
+
         // Check for valid URL format
         $parts = parse_url($url);
-        if(empty($this->requiredParts)) {
+        if ($this->requiredParts === []) {
             return !empty($parts);
         } else {
             // ensure all of the required parts are present in all of the keys
@@ -120,7 +122,7 @@ class UrlField extends TextField
     /**
      * Schemes are set by calling restrictToSchemes
      */
-    protected function setSchemes(array $schemes)
+    protected function setSchemes(array $schemes): static
     {
         $this->schemes = $schemes;
         return $this;
@@ -134,7 +136,7 @@ class UrlField extends TextField
     /**
      * Restrict to http (and https) protocols
      */
-    public function restrictToHttp()
+    public function restrictToHttp(): static
     {
         $this->restrictToSchemes(["https","http"]);
         $this->setAttribute(
@@ -150,7 +152,7 @@ class UrlField extends TextField
     /**
      * Restrict to URLs beginning with https://
      */
-    public function restrictToHttps()
+    public function restrictToHttps(): static
     {
         return $this->restrictToSchemes(["https"]);
     }
@@ -158,7 +160,7 @@ class UrlField extends TextField
     /**
      * Restrict to URLs beginning with the provided scheme
      */
-    public function restrictToSchemes(array $schemes)
+    public function restrictToSchemes(array $schemes): static
     {
         $this->setSchemes($schemes);
         $schemesString = implode("://, ", $schemes)  . "://";

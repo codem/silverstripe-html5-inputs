@@ -10,7 +10,6 @@ use SilverStripe\Forms\TextField;
  */
 class TelField extends TextField
 {
-
     use Core;
     use Datalist;
     use Pattern;
@@ -21,6 +20,7 @@ class TelField extends TextField
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function Type()
     {
         return 'tel text';
@@ -34,6 +34,7 @@ class TelField extends TextField
      *
      * @inheritdoc
      */
+    #[\Override]
     public function validate($validator)
     {
         return parent::validate($validator);

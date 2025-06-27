@@ -10,7 +10,6 @@ namespace Codem\Utilities\HTML5;
  */
 class WeekField extends DateField
 {
-
     /**
      * @inheritdoc
      */

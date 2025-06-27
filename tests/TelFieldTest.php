@@ -8,12 +8,11 @@ use Codem\Utilities\HTML5\TelField;
  * TelField input test
  */
 
-require_once(dirname(__FILE__) . '/Base.php');
+require_once(__DIR__ . '/Base.php');
 
 class TelFieldTest extends Base
 {
-
-    public function testDataList()
+    public function testDataList(): void
     {
         $options = [
             '1800 Testing' => 'phone 1',
@@ -29,7 +28,7 @@ class TelFieldTest extends Base
         $this->performDataListTest($field, $options);
     }
 
-    public function testInputType()
+    public function testInputType(): void
     {
         $name = "TestInputType";
         $title = "Test input type";
@@ -38,8 +37,8 @@ class TelFieldTest extends Base
         $this->assertEquals('tel', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = null;
@@ -48,8 +47,8 @@ class TelFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation() {
-        $formName = "TestFormValidation";
+    public function testNonEmptyFieldButRequiredValidation(): void
+    {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 'some value';

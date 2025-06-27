@@ -10,7 +10,6 @@ use SilverStripe\Forms\TextField;
  */
 class NumberField extends TextField
 {
-
     use Core;
     use Datalist;
     use Step;
@@ -21,17 +20,18 @@ class NumberField extends TextField
     /**
      * Validates for numeric value
      *
-     * @param Validator $validator
+     * @param \SilverStripe\Forms\Validator $validator
      *
-     * @return boolean
+     * @return bool
      */
+    #[\Override]
     public function validate($validator)
     {
         $value = trim($this->Value() ?? '');
-        if($value === '') {
+        if ($value === '') {
             // empty values are valid
             return true;
-        } else if (!is_numeric($value)) {
+        } elseif (!is_numeric($value)) {
             $validator->validationError(
                 $this->name,
                 _t('Codem\\Utilities\\HTML5\\NumberField.VALIDATION', 'Please enter a number value'),
