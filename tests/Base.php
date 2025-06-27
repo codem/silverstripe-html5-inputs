@@ -47,8 +47,7 @@ abstract class Base extends SapphireTest
             FieldList::create(),
             $validator
         );
-        $result = $form->validationResult();
-        return $result;
+        return $form->validationResult();
     }
 
 }

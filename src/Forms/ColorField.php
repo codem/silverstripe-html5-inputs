@@ -41,7 +41,7 @@ class ColorField extends FormField
      * On field construction this will be set to white
      * @var string|null
      */
-    protected $defaultValue = null;
+    protected $defaultValue;
 
     /**
      * Returns a colour input field
@@ -62,15 +62,16 @@ class ColorField extends FormField
      * Returns the value saved as a 6 chr RGB colour with # prefixed
      * @return string
      */
+    #[\Override]
     public function dataValue()
     {
-        $value = $this->getValidRGB($this->value);
-        return $value;
+        return $this->getValidRGB($this->value);
     }
 
     /**
      * @return string
      */
+    #[\Override]
     public function Value()
     {
         return $this->dataValue();
@@ -80,6 +81,7 @@ class ColorField extends FormField
      * When the value is set, handle incorrect values
      * @param string $value an RGB colour value as a 'valid simple colour'
      */
+    #[\Override]
     public function setValue($value, $data = null)
     {
         $this->value = $this->getValidRGB($value);
@@ -109,7 +111,6 @@ class ColorField extends FormField
 
     /**
      * Base on the value return either the defaultValue colour value or the value
-     * @return string
      * @param string $value the value to check
      * @param Validator $validator optional, see isValidRGB
      *
@@ -127,7 +128,7 @@ class ColorField extends FormField
 
         $simpleColourValue = $this->defaultValue ?? static::WHITE;
 
-        if (!$value) {
+        if (is_null($value) || $value === '') {
             // no value provided .. return the defaultValue if set or WHITE
             return $simpleColourValue;
         }
@@ -150,11 +151,11 @@ class ColorField extends FormField
     {
 
         // Ensure a string value
-        $value = $value ?? '';
+        $value ??= '';
 
         // If input is not exactly seven characters long, then return an error.
         if (mb_strlen($value) != 7) {
-            if ($validator) {
+            if ($validator instanceof \SilverStripe\Forms\Validator) {
                 $validator->validationError(
                     $this->name,
                     _t(
@@ -164,12 +165,13 @@ class ColorField extends FormField
                     "validation"
                 );
             }
+
             return false;
         }
 
         // If the first character in input is not a U+0023 NUMBER SIGN character (#), then return an error.
-        if (strpos($value, "#") !== 0) {
-            if ($validator) {
+        if (!str_starts_with($value, "#")) {
+            if ($validator instanceof \SilverStripe\Forms\Validator) {
                 $validator->validationError(
                     $this->name,
                     _t(
@@ -179,13 +181,14 @@ class ColorField extends FormField
                     "validation"
                 );
             }
+
             return false;
         }
 
         // If the last six characters of input are not all ASCII hex digits, then return an error.
         $hex = trim($value, "#");
         if (ctype_xdigit($hex) === false) {
-            if ($validator) {
+            if ($validator instanceof \SilverStripe\Forms\Validator) {
                 $validator->validationError(
                     $this->name,
                     _t(
@@ -195,6 +198,7 @@ class ColorField extends FormField
                     "validation"
                 );
             }
+
             return false;
         }
 
@@ -208,6 +212,7 @@ class ColorField extends FormField
      * @param Validator $validator
      * @return bool
      */
+    #[\Override]
     public function validate($validator)
     {
         return $this->isValidRGB($this->Value(), $validator);

@@ -9,11 +9,11 @@ use SilverStripe\Forms\RequiredFields;
  * URLField input test
  */
 
-require_once(dirname(__FILE__) . '/Base.php');
+require_once(__DIR__ . '/Base.php');
 
 class UrlFieldTest extends Base
 {
-    public function testDataList()
+    public function testDataList(): void
     {
         $options = [
             'https://example.com' => 'Example.com',
@@ -27,7 +27,7 @@ class UrlFieldTest extends Base
         $this->performDataListTest($field, $options);
     }
 
-    public function testInputType()
+    public function testInputType(): void
     {
         $name = "TestInputType";
         $title = "Test input type";
@@ -36,17 +36,17 @@ class UrlFieldTest extends Base
         $this->assertEquals('url', $field->getAttribute('type'));
     }
 
-    public function testHttpScheme()
+    public function testHttpScheme(): void
     {
         $url = 'ftp://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->restrictToHttp();
+
         $schemes = $field->getSchemes();
         $this->assertContains('http', $schemes);
         $this->assertContains('https', $schemes);
 
         $pattern = $field->getPattern();
-        $phpPattern = $field->getPHPPattern();
 
         $expectedPattern = "^(https|http)://.*";
         $expectedPhpPattern = "/^(https|http):\/\/.*/";
@@ -59,17 +59,17 @@ class UrlFieldTest extends Base
 
     }
 
-    public function testHttpsScheme()
+    public function testHttpsScheme(): void
     {
         $url = 'http://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->restrictToHttps();
+
         $schemes = $field->getSchemes();
         $this->assertNotContains('http', $schemes);
         $this->assertContains('https', $schemes);
 
         $pattern = $field->getPattern();
-        $phpPattern = $field->getPHPPattern();
 
         $expectedPattern = "^(https)://.*";
         $expectedPhpPattern = "/^(https):\/\/.*/";
@@ -81,32 +81,35 @@ class UrlFieldTest extends Base
         $this->assertFalse($result, "Field should not validate");
     }
 
-    public function testRequiredParts()
+    public function testRequiredParts(): void
     {
         $url = 'https://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->setRequiredParts(['scheme','query']);
+
         $result = $field->parseURL($url);
 
         $this->assertTrue($result, 'parseURL failed to pick up scheme and query in valid URL');
     }
 
-    public function testRequiredPartsMissing()
+    public function testRequiredPartsMissing(): void
     {
         $url = 'https://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->setRequiredParts(['scheme','query', 'fragment']);
+
         $result = $field->parseURL($url);
 
         $this->assertFalse($result, 'parseURL failed when finding fragment in URL with no fragment');
     }
 
-    public function testNonStandardSchemes()
+    public function testNonStandardSchemes(): void
     {
         $url = 'https://www.example.com/path?foo=bar';
         $schemes = ['blob','chrome','dict'];
         $field = UrlField::create('TestURL', 'Test URL', $url);
         $field->restrictToSchemes($schemes);
+
         $resultSchemes = $field->getSchemes();
         $this->assertEquals($schemes, $resultSchemes);
 
@@ -116,7 +119,7 @@ class UrlFieldTest extends Base
 
     }
 
-    public function testWithPattern()
+    public function testWithPattern(): void
     {
         $url = 'ftp://www.example.com/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
@@ -128,7 +131,7 @@ class UrlFieldTest extends Base
         $this->assertTrue($result, "Field should validate for url {$url}");
     }
 
-    public function testWithPatternToFail()
+    public function testWithPatternToFail(): void
     {
         $url = 'ftp://www.example.org/path?foo=bar';
         $field = UrlField::create('TestURL', 'Test URL', $url);
@@ -140,9 +143,8 @@ class UrlFieldTest extends Base
         $this->assertFalse($result, "Field should not validate for url {$url}");
     }
 
-    public function testEmptyFieldButRequiredValidation()
+    public function testEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = null;
@@ -151,9 +153,8 @@ class UrlFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation()
+    public function testNonEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 'https://example.com/something.txt';
@@ -163,9 +164,8 @@ class UrlFieldTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation()
+    public function testInvalidNonEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 'invalid-value';

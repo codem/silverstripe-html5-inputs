@@ -28,6 +28,7 @@ class UrlField extends TextField
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function Type()
     {
         return 'url text';
@@ -46,8 +47,9 @@ class UrlField extends TextField
      *
      * @param Validator $validator
      *
-     * @return boolean
+     * @return bool
      */
+    #[\Override]
     public function validate($validator)
     {
         $value = trim($this->Value() ?? '');
@@ -87,7 +89,7 @@ class UrlField extends TextField
         return true;
     }
 
-    public function setRequiredParts(array $requiredParts)
+    public function setRequiredParts(array $requiredParts): static
     {
         $this->requiredParts = $requiredParts;
         return $this;
@@ -99,13 +101,14 @@ class UrlField extends TextField
      */
     public function parseURL(string $url): bool
     {
-        if ($url == '') {
+        if ($url === '') {
             // an empty URL is a valid URL
             return true;
         }
+
         // Check for valid URL format
         $parts = parse_url($url);
-        if (empty($this->requiredParts)) {
+        if ($this->requiredParts === []) {
             return !empty($parts);
         } else {
             // ensure all of the required parts are present in all of the keys
@@ -119,7 +122,7 @@ class UrlField extends TextField
     /**
      * Schemes are set by calling restrictToSchemes
      */
-    protected function setSchemes(array $schemes)
+    protected function setSchemes(array $schemes): static
     {
         $this->schemes = $schemes;
         return $this;
@@ -133,7 +136,7 @@ class UrlField extends TextField
     /**
      * Restrict to http (and https) protocols
      */
-    public function restrictToHttp()
+    public function restrictToHttp(): static
     {
         $this->restrictToSchemes(["https","http"]);
         $this->setAttribute(
@@ -149,7 +152,7 @@ class UrlField extends TextField
     /**
      * Restrict to URLs beginning with https://
      */
-    public function restrictToHttps()
+    public function restrictToHttps(): static
     {
         return $this->restrictToSchemes(["https"]);
     }
@@ -157,7 +160,7 @@ class UrlField extends TextField
     /**
      * Restrict to URLs beginning with the provided scheme
      */
-    public function restrictToSchemes(array $schemes)
+    public function restrictToSchemes(array $schemes): static
     {
         $this->setSchemes($schemes);
         $schemesString = implode("://, ", $schemes)  . "://";

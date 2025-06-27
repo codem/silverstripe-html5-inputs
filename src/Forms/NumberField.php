@@ -22,8 +22,9 @@ class NumberField extends TextField
      *
      * @param Validator $validator
      *
-     * @return boolean
+     * @return bool
      */
+    #[\Override]
     public function validate($validator)
     {
         $value = trim($this->Value() ?? '');

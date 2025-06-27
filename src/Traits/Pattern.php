@@ -15,7 +15,6 @@ trait Pattern
 
     /**
      * Set a string pattern value for the pattern attribute
-     * @param string $pattern
      * @param string $phpPattern optional regular expression for use in server side validation. If not provided, $pattern will be used. Helpful when the JS RegExp won't compile.
      * @return FormField
      */
@@ -34,9 +33,6 @@ trait Pattern
         return $this->getAttribute('pattern');
     }
 
-    /**
-     * @return string
-     */
     public function getPHPPattern(): string
     {
         return $this->phpPattern;
@@ -56,8 +52,9 @@ trait Pattern
                 return true;
             }
         }
+
         $value = $this->Value() ?? '';
-        $check = preg_match($pattern, $value, $matches);
+        $check = preg_match($pattern, (string) $value, $matches);
         return $check === 1;
     }
 

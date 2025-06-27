@@ -8,11 +8,11 @@ use Codem\Utilities\HTML5\SearchField;
  * SearchField input test
  */
 
-require_once(dirname(__FILE__) . '/Base.php');
+require_once(__DIR__ . '/Base.php');
 
 class SearchFieldTest extends Base
 {
-    public function testDataList()
+    public function testDataList(): void
     {
         $options = [
             'horse',
@@ -27,7 +27,7 @@ class SearchFieldTest extends Base
         $this->performDataListTest($field, $options);
     }
 
-    public function testInputType()
+    public function testInputType(): void
     {
         $name = "TestInputType";
         $title = "Test input type";
@@ -36,9 +36,8 @@ class SearchFieldTest extends Base
         $this->assertEquals('search', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation()
+    public function testEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = null;
@@ -47,9 +46,8 @@ class SearchFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation()
+    public function testNonEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 'keyword';

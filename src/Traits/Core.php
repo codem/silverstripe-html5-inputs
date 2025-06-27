@@ -12,7 +12,7 @@ trait Core
      * Convert a boolean value to a string for use in an attribute value
      * Any value provided in that resolves to true will return 'true'
      */
-    protected function bool2str($value)
+    protected function bool2str($value): string
     {
         return $value ? 'true' : 'false';
     }

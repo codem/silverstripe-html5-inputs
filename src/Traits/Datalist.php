@@ -33,6 +33,7 @@ trait Datalist
                 'Label' => $label
             ]));
         }
+
         return $list;
     }
 
@@ -48,6 +49,7 @@ trait Datalist
         if (!$id) {
             $id = $this->ID() . "_datalist";
         }
+
         $this->inputDatalistId = $id;
         $this->setAttribute('list', $id);
         return $this;

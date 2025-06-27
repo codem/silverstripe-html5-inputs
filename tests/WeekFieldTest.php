@@ -8,11 +8,11 @@ use Codem\Utilities\HTML5\WeekField;
  * WeekField input test
  */
 
-require_once(dirname(__FILE__) . '/Base.php');
+require_once(__DIR__ . '/Base.php');
 
 class WeekFieldTest extends Base
 {
-    public function testDataList()
+    public function testDataList(): void
     {
         $options = [
             '2019-W26' => 'Week 26, 2019'
@@ -24,7 +24,7 @@ class WeekFieldTest extends Base
         $this->performDataListTest($field, $options);
     }
 
-    public function testInputType()
+    public function testInputType(): void
     {
         $name = "TestInputType";
         $title = "Test input type";
@@ -33,9 +33,8 @@ class WeekFieldTest extends Base
         $this->assertEquals('week', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation()
+    public function testEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = null;
@@ -44,9 +43,8 @@ class WeekFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation()
+    public function testNonEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = '2020-W52';
@@ -56,9 +54,8 @@ class WeekFieldTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation()
+    public function testInvalidNonEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = '2020-W54';

@@ -36,8 +36,9 @@ class RangeField extends TextField
      *
      * @param Validator $validator
      *
-     * @return boolean
+     * @return bool
      */
+    #[\Override]
     public function validate($validator)
     {
         $value = trim($this->Value() ?? '');
@@ -45,6 +46,7 @@ class RangeField extends TextField
             // empty values are valid
             return true;
         }
+
         if (!is_numeric($value)) {
             $validator->validationError(
                 $this->name,
@@ -54,6 +56,7 @@ class RangeField extends TextField
             // value is not valid
             return false;
         }
+
         $max = $this->getMax();
         $min = $this->getMin();
         if (is_numeric($min) && is_numeric($max)) {
@@ -73,6 +76,7 @@ class RangeField extends TextField
                     'validation'
                 );
             }
+
             return $valid;
         } elseif (is_numeric($min)) {
             $valid = $value >= $min;

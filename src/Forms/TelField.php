@@ -20,6 +20,7 @@ class TelField extends TextField
     /**
      * @inheritdoc
      */
+    #[\Override]
     public function Type()
     {
         return 'tel text';
@@ -33,6 +34,7 @@ class TelField extends TextField
      *
      * @inheritdoc
      */
+    #[\Override]
     public function validate($validator)
     {
         return parent::validate($validator);

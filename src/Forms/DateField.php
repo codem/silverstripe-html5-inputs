@@ -59,8 +59,9 @@ class DateField extends TextField
      *
      * @param Validator $validator
      *
-     * @return boolean
+     * @return bool
      */
+    #[\Override]
     public function validate($validator)
     {
         try {
@@ -69,13 +70,15 @@ class DateField extends TextField
                 // empty values are valid
                 return true;
             }
+
             $dt = new \Datetime($value);
             $formatted = $this->formatDate($dt);
-            if ($formatted != $value) {
+            if ($formatted !== $value) {
                 throw new \Exception("Invalid date value passed");
             }
+
             return true;
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             $validator->validationError(
                 $this->name,
                 _t(

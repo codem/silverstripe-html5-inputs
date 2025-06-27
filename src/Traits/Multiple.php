@@ -20,6 +20,7 @@ trait Multiple
         } else {
             unset($this->attributes['multiple']);
         }
+
         return $this;
     }
 

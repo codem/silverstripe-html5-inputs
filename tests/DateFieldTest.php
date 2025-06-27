@@ -8,11 +8,11 @@ use Codem\Utilities\HTML5\DateField;
  * DateField input test
  */
 
-require_once(dirname(__FILE__) . '/Base.php');
+require_once(__DIR__ . '/Base.php');
 
 class DateFieldTest extends Base
 {
-    public function testDataList()
+    public function testDataList(): void
     {
         $options = [
             '2018-01-01' => 'Option 1',
@@ -26,7 +26,7 @@ class DateFieldTest extends Base
         $this->performDataListTest($field, $options);
     }
 
-    public function testInputType()
+    public function testInputType(): void
     {
         $name = "TestInputType";
         $title = "Test input type";
@@ -35,9 +35,8 @@ class DateFieldTest extends Base
         $this->assertEquals('date', $field->getAttribute('type'));
     }
 
-    public function testEmptyFieldButRequiredValidation()
+    public function testEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = null;
@@ -46,9 +45,8 @@ class DateFieldTest extends Base
         $this->assertFalse($result->isValid());
     }
 
-    public function testNonEmptyFieldButRequiredValidation()
+    public function testNonEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = '2020-01-01';
@@ -58,9 +56,8 @@ class DateFieldTest extends Base
     }
 
 
-    public function testInvalidNonEmptyFieldButRequiredValidation()
+    public function testInvalidNonEmptyFieldButRequiredValidation(): void
     {
-        $formName = "TestFormValidation";
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
         $fieldValue = 'invalid-value';
