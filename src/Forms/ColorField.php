@@ -152,7 +152,7 @@ class ColorField extends FormField
         $value ??= '';
 
         // If input is not exactly seven characters long, then return an error.
-        if (mb_strlen($value) != 7) {
+        if (mb_strlen($value) !== 7) {
             if (!is_null($validationResult)) {
                 $validationResult->addFieldError(
                     $this->name,
