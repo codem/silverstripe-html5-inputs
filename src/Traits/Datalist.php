@@ -34,7 +34,6 @@ trait Datalist
 
     /**
      * Set a list of values rendered into a <datalist> tag (HTMLDataListElement)
-     * @param array $datalist
      * @param string $id optional datalist id attribute
      */
     public function setDatalist(array $datalist, $id = null): static
