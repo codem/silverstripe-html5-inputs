@@ -2,7 +2,6 @@
 
 namespace Codem\Utilities\HTML5\Tests;
 
-use Codem\Utilities\HTML5\ColorField;
 use Codem\Utilities\HTML5\ColourField;
 
 /**
