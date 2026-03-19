@@ -94,6 +94,7 @@ class RangeField extends TextField
                     'validation'
                 );
             }
+
             return $valid;
         } elseif (is_numeric($max)) {
             $valid = $value <= $max;
@@ -111,6 +112,7 @@ class RangeField extends TextField
                     'validation'
                 );
             }
+
             return $valid;
         } else {
             // no range restriction, numeric value is valid

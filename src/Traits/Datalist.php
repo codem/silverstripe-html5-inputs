@@ -11,7 +11,6 @@ use SilverStripe\View\ArrayData;
  */
 trait Datalist
 {
-
     protected ?ArrayList $inputDatalist = null;
 
     protected string $inputDatalistId = '';
@@ -34,7 +33,6 @@ trait Datalist
 
     /**
      * Set a list of values rendered into a <datalist> tag (HTMLDataListElement)
-     * @param array $datalist
      * @param string $id optional datalist id attribute
      */
     public function setDatalist(array $datalist, $id = null): static

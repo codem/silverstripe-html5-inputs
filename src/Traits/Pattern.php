@@ -8,7 +8,6 @@ namespace Codem\Utilities\HTML5;
  */
 trait Pattern
 {
-
     protected string $phpPattern = '';
 
     /**
