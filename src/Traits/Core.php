@@ -32,7 +32,7 @@ trait Core
     /**
      *  Get spellcheck attribute value
      */
-    public function getSpellcheck(): string
+    public function getSpellcheck(): ?string
     {
         return $this->getAttribute('spellcheck');
     }

@@ -51,7 +51,7 @@ class NumberFieldTest extends Base
     {
         $fieldName = "TestValidation";
         $fieldTitle = "Test validation";
-        $fieldValue = 3;
+        $fieldValue = '3';// string values are submitted
         $field = NumberField::create($fieldName, $fieldTitle, $fieldValue);
         $result = $this->getRequiredFieldValidationResult($field);
         $this->assertTrue($result->isValid());

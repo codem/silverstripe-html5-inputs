@@ -2,8 +2,8 @@
 
 namespace Codem\Utilities\HTML5;
 
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\ValidationResult;
 
 /**
  * Provides a URL input field
@@ -44,24 +44,21 @@ class UrlField extends TextField
 
     /**
      * TODO: use domain validation to validate the URL
-     *
-     * @param \SilverStripe\Forms\Validator $validator
-     *
-     * @return bool
      */
     #[\Override]
-    public function validate($validator)
+    public function validate(): ValidationResult
     {
-        $value = trim($this->Value() ?? '');
+        $validationResult = parent::validate();
+        $value = trim($this->getValue() ?? '');
         if ($value === '') {
             // Use RequiredFields to validate empty submissions
-            return true;
+            return $validationResult;
         }
 
         $check = $this->validateValueAgainstPattern();
         if ($check != 1) {
             // validation failed
-            $validator->validationError(
+            $validationResult->addFieldError(
                 $this->getName(),
                 _t(
                     'Codem\\Utilities\\HTML5\\UrlField.FAILED_PATTERN_VALIDATION',
@@ -70,12 +67,12 @@ class UrlField extends TextField
                 ValidationResult::TYPE_ERROR
             );
             // Pattern validation failed
-            return false;
+            return $validationResult;
         }
 
         // Check for valid URL format
         if (!$this->parseURL($value)) {
-            $validator->validationError(
+            $validationResult->addFieldError(
                 $this->getName(),
                 _t(
                     'Codem\\Utilities\\HTML5\\UrlField.FAILED_URL_PARSE',
@@ -83,10 +80,10 @@ class UrlField extends TextField
                 ),
                 ValidationResult::TYPE_ERROR
             );
-            return false;
+            return $validationResult;
         }
 
-        return true;
+        return $validationResult;
     }
 
     public function setRequiredParts(array $requiredParts): static

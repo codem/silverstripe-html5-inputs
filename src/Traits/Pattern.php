@@ -21,10 +21,7 @@ trait Pattern
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPattern()
+    public function getPattern(): ?string
     {
         return $this->getAttribute('pattern');
     }
@@ -49,7 +46,7 @@ trait Pattern
             }
         }
 
-        $value = $this->Value() ?? '';
+        $value = $this->getValue() ?? '';
         $check = preg_match($pattern, (string) $value, $matches);
         return $check === 1;
     }
