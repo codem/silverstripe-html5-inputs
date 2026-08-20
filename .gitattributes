@@ -7,3 +7,4 @@
 /code-of-conduct.md         export-ignore
 /CONTRIBUTING.md            export-ignore
 /README.md                  export-ignore
+/.devcontainer/             export-ignore

@@ -1,0 +1,22 @@
+{
+  "name": "Silverstripe vendor module — static analysis & tests",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "vscode",
+
+  "features": {
+    // Installs Claude Code + (in VS Code / Codespaces) the Claude Code extension.
+    // Installs Node automatically if the base image doesn't have it.
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  // MySQL (test DB for phpunit)
+  "forwardPorts": [3306],
+  "portsAttributes": {
+    "3306": { "label": "MySQL (test DB for phpunit)" }
+  }
+
+}
