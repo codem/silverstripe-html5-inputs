@@ -7,8 +7,7 @@ use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormField;
-use SilverStripe\Forms\RequiredFields;
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Core\Validation\ValidationResult;
 
 /**
  * Abstract class for field tests
@@ -39,7 +38,7 @@ abstract class Base extends SapphireTest
     public function getRequiredFieldValidationResult(FormField $field): ValidationResult
     {
         $controller = Controller::create();
-        $validator = RequiredFields::create([$field->getName()]);
+        $validator = \SilverStripe\Forms\Validation\RequiredFieldsValidator::create([$field->getName()]);
         $form = Form::create(
             $controller,
             'RequiredFieldTestForm',
@@ -47,7 +46,7 @@ abstract class Base extends SapphireTest
             FieldList::create(),
             $validator
         );
-        return $form->validationResult();
+        return $form->validate();
     }
 
 }

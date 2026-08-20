@@ -24,15 +24,15 @@ trait Core
     {
         if ($spellcheck === "") {
             return $this->setAttribute('spellcheck', '');
-        } else {
-            return $this->setAttribute('spellcheck', $this->bool2str($spellcheck));
         }
+
+        return $this->setAttribute('spellcheck', $this->bool2str($spellcheck));
     }
 
     /**
      *  Get spellcheck attribute value
      */
-    public function getSpellcheck(): string
+    public function getSpellcheck(): ?string
     {
         return $this->getAttribute('spellcheck');
     }

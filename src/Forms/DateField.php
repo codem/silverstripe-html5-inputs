@@ -2,6 +2,7 @@
 
 namespace Codem\Utilities\HTML5;
 
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Forms\TextField;
 
 /**
@@ -54,21 +55,15 @@ class DateField extends TextField
         return $this->setAttribute('max', $this->formatDate($max));
     }
 
-    /**
-     * Validates for date value in format specified
-     *
-     * @param \SilverStripe\Forms\Validator $validator
-     *
-     * @return bool
-     */
     #[\Override]
-    public function validate($validator)
+    public function validate(): ValidationResult
     {
         try {
-            $value = trim($this->Value() ?? '');
+            $validationResult = parent::validate();
+            $value = trim($this->getValue() ?? '');
             if ($value === '') {
                 // empty values are valid
-                return true;
+                return $validationResult;
             }
 
             $dt = new \Datetime($value);
@@ -77,9 +72,9 @@ class DateField extends TextField
                 throw new \Exception("Invalid date value passed");
             }
 
-            return true;
+            return $validationResult;
         } catch (\Exception) {
-            $validator->validationError(
+            $validationResult->addFieldError(
                 $this->name,
                 _t(
                     'Codem\\Utilities\\HTML5\\DateField.VALIDATION',
@@ -89,9 +84,9 @@ class DateField extends TextField
                         'example' => $this->example
                     ]
                 ),
-                'validation'
+                ValidationResult::TYPE_ERROR
             );
-            return false;
+            return $validationResult;
         }
     }
 

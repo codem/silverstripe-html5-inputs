@@ -23,7 +23,7 @@ trait Multiple
         return $this;
     }
 
-    public function getMultiple()
+    public function getMultiple(): ?string
     {
         return $this->getAttribute('multiple');
     }

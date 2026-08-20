@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Codem\Utilities\HTML5;
 
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Forms\TextField;
 
 /**
@@ -35,8 +38,8 @@ class TelField extends TextField
      * @inheritdoc
      */
     #[\Override]
-    public function validate($validator)
+    public function validate(): ValidationResult
     {
-        return parent::validate($validator);
+        return parent::validate();
     }
 }
