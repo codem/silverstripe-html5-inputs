@@ -108,6 +108,7 @@ class UrlField extends TextField
         if ($this->requiredParts === []) {
             return !empty($parts);
         }
+
         // ensure all of the required parts are present in all of the keys
         $result = array_intersect($this->requiredParts, array_keys($parts));
         sort($result);

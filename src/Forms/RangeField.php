@@ -70,8 +70,10 @@ class RangeField extends TextField
                     ValidationResult::TYPE_ERROR
                 );
             }
+
             return $validationResult;
         }
+
         if (is_numeric($min)) {
             $valid = $value >= $min;
             if (!$valid) {
@@ -88,8 +90,10 @@ class RangeField extends TextField
                     ValidationResult::TYPE_ERROR
                 );
             }
+
             return $validationResult;
         }
+
         if (is_numeric($max)) {
             $valid = $value <= $max;
             if (!$valid) {
@@ -106,8 +110,10 @@ class RangeField extends TextField
                     ValidationResult::TYPE_ERROR
                 );
             }
+
             return $validationResult;
         }
+
         // no range restriction, numeric value is valid
         return $validationResult;
     }

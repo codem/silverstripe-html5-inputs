@@ -27,6 +27,7 @@ class NumberField extends TextField
             // empty values are valid
             return $validationResult;
         }
+
         if (!is_numeric($value)) {
             $validationResult->addFieldError(
                 $this->name,
@@ -35,6 +36,7 @@ class NumberField extends TextField
             );
             return $validationResult;
         }
+
         return $validationResult;
     }
 
