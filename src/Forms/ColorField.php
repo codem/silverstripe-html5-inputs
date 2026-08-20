@@ -121,7 +121,7 @@ class ColorField extends FormField
      *    representing the red component, the middle two digits representing the green component,
      *  and the last two digits representing the blue component, in hexadecimal.</blockquote>
      */
-    public function getValidRGB(?string $value, ValidationResult &$validationResult = null): string
+    public function getValidRGB(?string $value, ?ValidationResult &$validationResult = null): string
     {
 
         $simpleColourValue = $this->defaultValue ?? static::WHITE;
@@ -145,7 +145,7 @@ class ColorField extends FormField
      * @param string $value
      * @param ValidationResult|null $validationResult an optional validator. If provided specific errors will be stored in the validator
      */
-    public function isValidRGB(?string $value, ValidationResult &$validationResult = null): bool
+    public function isValidRGB(?string $value, ?ValidationResult &$validationResult = null): bool
     {
 
         // Ensure a string value
