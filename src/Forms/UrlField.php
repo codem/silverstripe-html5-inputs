@@ -107,13 +107,12 @@ class UrlField extends TextField
         $parts = parse_url($url);
         if ($this->requiredParts === []) {
             return !empty($parts);
-        } else {
-            // ensure all of the required parts are present in all of the keys
-            $result = array_intersect($this->requiredParts, array_keys($parts));
-            sort($result);
-            sort($this->requiredParts);
-            return $result == $this->requiredParts;
         }
+        // ensure all of the required parts are present in all of the keys
+        $result = array_intersect($this->requiredParts, array_keys($parts));
+        sort($result);
+        sort($this->requiredParts);
+        return $result == $this->requiredParts;
     }
 
     /**

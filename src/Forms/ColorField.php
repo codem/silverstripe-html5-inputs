@@ -133,7 +133,7 @@ class ColorField extends FormField
 
         $value = strtolower($value);
         if (!$this->isValidRGB($value, $validationResult)) {
-            $value = $simpleColourValue;
+            return $simpleColourValue;
         }
 
         // Let result be a simple color.

@@ -26,16 +26,16 @@ class NumberField extends TextField
         if ($value === '') {
             // empty values are valid
             return $validationResult;
-        } elseif (!is_numeric($value)) {
+        }
+        if (!is_numeric($value)) {
             $validationResult->addFieldError(
                 $this->name,
                 _t('Codem\\Utilities\\HTML5\\NumberField.VALIDATION', 'Please enter a number value'),
                 ValidationResult::TYPE_ERROR
             );
             return $validationResult;
-        } else {
-            return $validationResult;
         }
+        return $validationResult;
     }
 
 }

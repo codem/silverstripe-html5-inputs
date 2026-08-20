@@ -24,9 +24,8 @@ trait Core
     {
         if ($spellcheck === "") {
             return $this->setAttribute('spellcheck', '');
-        } else {
-            return $this->setAttribute('spellcheck', $this->bool2str($spellcheck));
         }
+        return $this->setAttribute('spellcheck', $this->bool2str($spellcheck));
     }
 
     /**

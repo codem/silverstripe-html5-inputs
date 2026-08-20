@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Codem\Utilities\HTML5;
 
 use SilverStripe\Forms\EmailField as CoreEmailField;
