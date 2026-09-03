@@ -1,6 +1,12 @@
-# Devcontainer setup for a Silverstripe vendor module (static analysis + tests only)
+# Devcontainer setup for a Silverstripe module
 
-Drop the contents of this bundle into the root of a module repository.
+## What this is for
+
+This devcontainer exists for exactly four things: `phpstan` analysis, `rector`
+refactoring, `php-cs-fixer` formatting, and `phpunit` tests — all run directly
+against the module in `/workspace`.
+
+### Layout
 
 ```
 your-module/
@@ -10,15 +16,8 @@ your-module/
 │   ├── Dockerfile
 │   └── post-create.sh
 └── composer.json
+└── // other module files
 ```
-
-Your existing `phpunit.xml` and `.gitignore` remain unchanged.
-
-## What this is for
-
-This devcontainer exists for exactly four things: `phpstan` analysis, `rector`
-refactoring, `php-cs-fixer` formatting, and `phpunit` tests — all run directly
-against the module in `/workspace`.
 
 ## 1. Open it in the devcontainer
 
@@ -67,14 +66,36 @@ this automatically.
 want Features (Claude Code) and `postCreateCommand` applied just like
 Zed/VS Code would, but without Zed's builder:
 
+### Install devcontainers
+
+On host machine:
 ```bash
-npm install -g @devcontainers/cli   # run on your host machine, once
+npm install -g @devcontainers/cli
+```
+
+### Work with the devcontainer
+
+Start it
+```bash
 devcontainer up --workspace-folder .
+```
+
+Start it but remove existing container
+```bash
+devcontainer up --workspace-folder . --remove-existing-container
+```
+
+Run phpunit
+```bash
 devcontainer exec --workspace-folder . vendor/bin/phpunit
+```
+
+Run Claude Code within the devcontainer. You will be prompted for setup on first run.
+```bash
 devcontainer exec --workspace-folder . claude
 ```
 
-`devcontainer up` builds the image, applies the
-`ghcr.io/anthropics/devcontainer-features/claude-code` feature, mounts the
-workspace, and runs `postCreateCommand`. Re-run
-`devcontainer exec --workspace-folder . bash` any time to get a shell.
+Get a shell
+```bash
+devcontainer exec --workspace-folder . bash
+```
